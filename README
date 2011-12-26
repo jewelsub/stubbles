@@ -1,0 +1,9 @@
+== Stubbles
+
+A rails solution for fast project management tool
+
+
+== Generated scaffold
+
+rails generate scaffold Project name:string description:text start_date:date
+rails generate scaffold Story title:string status:string description:text project:references assigned_to_id:integer

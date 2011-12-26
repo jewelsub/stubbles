@@ -1,0 +1,31 @@
+<h1>Listing stories</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Description</th>
+    <th>Project</th>
+    <th>Assigned to</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stories.each do |story| %>
+  <tr>
+    <td><%= story.title %></td>
+    <td><%= story.status %></td>
+    <td><%= story.description %></td>
+    <td><%= story.project %></td>
+    <td><%= story.assigned_to %></td>
+    <td><%= link_to 'Show', project_story_path(@project, story) %></td>
+    <td><%= link_to 'Edit', edit_project_story_path(@project, story) %></td>
+    <td><%= link_to 'Destroy', project_story_path(@project, story), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Story', new_project_story_path(@project.id) %>

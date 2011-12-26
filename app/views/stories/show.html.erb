@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @story.title %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @story.status %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @story.description %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @story.project.name %>
+</p>
+
+<p>
+  <b>Assigned to:</b>
+  <%= @story.assigned_to %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_story_path(@project, @story) %> |
+<%= link_to 'Back', project_stories_path(@project) %>
