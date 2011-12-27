@@ -1,5 +1,4 @@
-class Story < ActiveRecord::Base
-  belongs_to :project
+class Task < ActiveRecord::Base
+  belongs_to :story
   belongs_to :assigned_to, :class_name => "User", :foreign_key => "assigned_to_id"
-  has_many :tasks
 end
