@@ -1,8 +1,7 @@
 class TasksController < ApplicationController
-  # GET /tasks
-  # GET /tasks.json
+  before_filter :load_story, :authenticate_user!
   def index
-    @tasks = Task.all
+    @tasks = @story.tasks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +12,7 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    @task = Task.find(params[:id])
+    @task = @story.tasks.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +23,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
-    @task = Task.new
+    @task = @story.tasks.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +33,17 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
+    @task = @story.tasks.find(params[:id])
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @task = @story.tasks.new(params[:task])
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, :notice => 'Task was successfully created.' }
+        format.html { redirect_to [@story, @task], :notice => 'Task was successfully created.' }
         format.json { render :json => @task, :status => :created, :location => @task }
       else
         format.html { render :action => "new" }
@@ -56,11 +55,11 @@ class TasksController < ApplicationController
   # PUT /tasks/1
   # PUT /tasks/1.json
   def update
-    @task = Task.find(params[:id])
+    @task = @story.tasks.find(params[:id])
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, :notice => 'Task was successfully updated.' }
+        format.html { redirect_to [@story, @task], :notice => 'Task was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,7 +71,7 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    @task = Task.find(params[:id])
+    @task = @story.tasks.find(params[:id])
     @task.destroy
 
     respond_to do |format|
@@ -80,4 +79,11 @@ class TasksController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+  def load_story
+    @story = Story.find(params[:story_id])
+  end
+
 end

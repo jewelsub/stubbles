@@ -22,6 +22,7 @@
     <td><%= link_to 'Show', project_story_path(@project, story) %></td>
     <td><%= link_to 'Edit', edit_project_story_path(@project, story) %></td>
     <td><%= link_to 'Destroy', project_story_path(@project, story), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Tasks', story_tasks_path(story) %></td>
   </tr>
 <% end %>
 </table>

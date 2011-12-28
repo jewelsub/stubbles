@@ -79,8 +79,9 @@ class StoriesController < ApplicationController
     end
   end
   
-  private
+ private
+
   def load_project
-    @project = Project.find params[:project_id]    
+    @project = Project.find(params[:project_id])
   end
 end
