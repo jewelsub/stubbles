@@ -1,2 +1,2 @@
-module ProjectMembershipHelper
+module ProjectMembershipsHelper
 end

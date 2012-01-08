@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20111229151700) do
     t.string   "name"
     t.text     "description"
     t.date     "started_on"
+    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

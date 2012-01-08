@@ -1,0 +1,21 @@
+<h1><%= @project.name %></h1>
+
+<%= render 'form' %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>email</th>
+    <th>role</th>
+    <th></th>
+  </tr>
+
+<% @project_memberships.each do |membership| %>
+  <tr>
+    <td><%= membership.user.name %></td>
+    <td><%= membership.user.email %></td>
+    <td><%= membership.role %></td>
+    <td><%= link_to 'Destroy', project_project_membership_path(@project, membership), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

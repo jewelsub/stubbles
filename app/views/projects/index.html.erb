@@ -19,6 +19,7 @@
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
     <td><%= link_to 'Stories', project_stories_path(project) %></td>
+<td><%= link_to 'Members', project_project_memberships_path(project) %></td>
   </tr>
 <% end %>
 </table>

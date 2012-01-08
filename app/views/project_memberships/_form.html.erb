@@ -1,0 +1,8 @@
+<%= form_for([@project, @project_membership]) do |f| %>
+<div>
+	<%= f.label :search %>
+	<%= text_field_tag :email %>
+	<%= f.select(:role, Role::all) %>
+	<%= f.submit 'Add user'%>
+</div>
+<% end %>

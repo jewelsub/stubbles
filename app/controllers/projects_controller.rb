@@ -1,9 +1,8 @@
 class ProjectsController < ApplicationController
-
   before_filter :authenticate_user!
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +11,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -20,22 +19,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def add_member
-    @project = Project.find(params[:id])
-
-    respond_to do |format|
-      if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, :notice => 'Project was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @project.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   def new
-    @project = Project.new
+    @project = current_user.projects.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,11 +29,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.projects.new({:creator => current_user}.merge(params[:project]))
 
     respond_to do |format|
       if @project.save
@@ -62,7 +47,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
@@ -76,7 +61,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.destroy
 
     respond_to do |format|

@@ -5,9 +5,6 @@ Stubbles::Application.routes.draw do
 
   resources :projects do
     resources :stories
-    member do
-      post 'add_member'
-    end
     resources :project_memberships
   end
 
