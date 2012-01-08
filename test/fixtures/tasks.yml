@@ -1,13 +1,17 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+stubbles_story1_task1:
+  title: Stubbles_story1_task1
+  status: new
+  story: stubbles_story1
+  assigned_to: jitu
+  hours_estimated: 10
+  hours_spent: 0
+  deadline: <%= 7.days.from_now.to_s(:db) %>
 
-one:
-  title: MyString
-  status: MyString
-  story: 
-  assigned_to_id: 1
-
-two:
-  title: MyString
-  status: MyString
-  story: 
-  assigned_to_id: 1
+stubbles_story1_task2:
+  title: Stubbles_story1_task2
+  status: new
+  story: stubbles_story1
+  assigned_to: setu
+  hours_estimated: 6
+  hours_spent: 2
+  deadline: <%= 7.days.from_now.to_s(:db) %>

@@ -10,12 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227091857) do
+ActiveRecord::Schema.define(:version => 20111229151700) do
+
+  create_table "project_memberships", :force => true do |t|
+    t.integer "project_id", :null => false
+    t.integer "user_id",    :null => false
+    t.string  "role",       :null => false
+  end
+
+  add_index "project_memberships", ["project_id"], :name => "index_project_memberships_on_project_id"
+  add_index "project_memberships", ["user_id"], :name => "index_project_memberships_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "start_date"
+    t.date     "started_on"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20111227091857) do
     t.datetime "updated_at"
   end
 
+  add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
   add_index "stories", ["project_id"], :name => "index_stories_on_project_id"
 
   create_table "tasks", :force => true do |t|
@@ -37,6 +47,9 @@ ActiveRecord::Schema.define(:version => 20111227091857) do
     t.string   "status"
     t.integer  "story_id"
     t.integer  "assigned_to_id"
+    t.float    "hours_estimated"
+    t.float    "hours_spent"
+    t.date     "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20111227091857) do
   add_index "tasks", ["story_id"], :name => "index_tasks_on_story_id"
 
   create_table "users", :force => true do |t|
+    t.string   "name"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"

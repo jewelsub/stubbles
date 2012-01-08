@@ -5,10 +5,11 @@ class CreateStories < ActiveRecord::Migration
       t.string :status
       t.text :description
       t.references :project
-      t.integer :assigned_to_id
+      t.references :assigned_to
 
       t.timestamps
     end
     add_index :stories, :project_id
+    add_index :stories, :assigned_to_id
   end
 end

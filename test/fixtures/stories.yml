@@ -1,15 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+stubbles_story1:
+  title: Stubbles_story1
+  status: new
+  description: Stubbles_story 1 description 
+  project: stubbles
+  assigned_to: jitu
 
-one:
-  title: MyString
-  status: MyString
-  description: MyText
-  project: 
-  assigned_to: 1
-
-two:
-  title: MyString
-  status: MyString
-  description: MyText
-  project: 
-  assigned_to: 1
+stubbles_story2:
+  title: Stubbles_story2
+  status: new
+  description: Stubbles_story 2 description 
+  project: stubbles
+  assigned_to: jitu

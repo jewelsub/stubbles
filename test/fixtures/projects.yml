@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  name: MyString
-  description: MyText
+stubbles:
+  name: Stubbles
+  description: This is a project management tool
   start_date: 2011-12-27
 
-two:
-  name: MyString
-  description: MyText
-  start_date: 2011-12-27
+SocialWeb:
+  name: Social Web
+  description: This is a distributed solution for socail application
+  start_date: 2011-12-29

@@ -17,8 +17,8 @@
     <td><%= story.title %></td>
     <td><%= story.status %></td>
     <td><%= story.description %></td>
-    <td><%= story.project %></td>
-    <td><%= story.assigned_to %></td>
+    <td><%= story.project.name %></td>
+    <td><%= story.assigned_to.name %></td>
     <td><%= link_to 'Show', project_story_path(@project, story) %></td>
     <td><%= link_to 'Edit', edit_project_story_path(@project, story) %></td>
     <td><%= link_to 'Destroy', project_story_path(@project, story), :confirm => 'Are you sure?', :method => :delete %></td>

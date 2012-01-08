@@ -15,8 +15,8 @@
   <tr>
     <td><%= task.title %></td>
     <td><%= task.status %></td>
-    <td><%= task.story %></td>
-    <td><%= task.assigned_to_id %></td>
+    <td><%= task.story.title %></td>
+    <td><%= task.assigned_to.name %></td>
     <td><%= link_to 'Show', story_task_path(@story, task) %></td>
     <td><%= link_to 'Edit', edit_story_task_path(@story, task) %></td>
     <td><%= link_to 'Destroy', story_task_path(@story, task), :confirm => 'Are you sure?', :method => :delete %></td>
