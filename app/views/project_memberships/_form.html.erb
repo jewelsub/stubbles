@@ -1,4 +1,4 @@
-<%= form_for([@project, @project_membership]) do |f| %>
+<%= form_for([@project, @project_membership], :remote => true) do |f| %>
 <div>
 	<%= f.label :search %>
 	<%= text_field_tag :email %>

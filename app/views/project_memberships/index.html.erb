@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 
-<table>
+<table id='users'>
   <tr>
     <th>Name</th>
     <th>email</th>
@@ -11,11 +11,6 @@
   </tr>
 
 <% @project_memberships.each do |membership| %>
-  <tr>
-    <td><%= membership.user.name %></td>
-    <td><%= membership.user.email %></td>
-    <td><%= membership.role %></td>
-    <td><%= link_to 'Destroy', project_project_membership_path(@project, membership), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<%= render :partial => 'row', :locals => {:membership => membership, :project => @project} %>
 <% end %>
 </table>

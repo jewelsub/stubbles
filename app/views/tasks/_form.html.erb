@@ -19,6 +19,14 @@
     <%= f.label :assigned_to_id %><br />
     <%= f.select(:assigned_to_id, User.find(:all).collect {|u| [u.email, u.id]}, :prompt => 'Select') %>
   </div>
+  <div class="field">
+    <%= f.label :hours_estimated %><br />
+    <%= f.text_field :hours_estimated %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_spent %><br />
+    <%= f.text_field :hours_spent %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

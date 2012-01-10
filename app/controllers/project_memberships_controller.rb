@@ -20,9 +20,11 @@ class ProjectMembershipsController < ApplicationController
       if @project_membership.save
         format.html { redirect_to project_project_memberships_url(@project), :notice => 'User was successfully added.' }
         format.json { render :json => @project_membership, :status => :created, :location => @project }
+        format.js
       else
         format.html { render :action => "index" }
         format.json { render :json => @project_membership.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
