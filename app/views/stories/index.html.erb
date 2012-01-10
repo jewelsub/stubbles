@@ -1,31 +1,14 @@
-<h1>Listing stories</h1>
+<h1><%= @project.name %></h1>
+<h2>Stories</h2>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Status</th>
-    <th>Description</th>
-    <th>Project</th>
-    <th>Assigned to</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul id='stories'>
 <% @stories.each do |story| %>
-  <tr>
-    <td><%= story.title %></td>
-    <td><%= story.status %></td>
-    <td><%= story.description %></td>
-    <td><%= story.project.name %></td>
-    <td><%= story.assigned_to.name %></td>
-    <td><%= link_to 'Show', project_story_path(@project, story) %></td>
-    <td><%= link_to 'Edit', edit_project_story_path(@project, story) %></td>
-    <td><%= link_to 'Destroy', project_story_path(@project, story), :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Tasks', story_tasks_path(story) %></td>
-  </tr>
+	<li id='<%= story.id %>'>
+	<%= render :partial => 'row_view', :locals => {:story => story, :project => @project} %>
+	</li>
 <% end %>
-</table>
+
+</ul>
 
 <br />
 

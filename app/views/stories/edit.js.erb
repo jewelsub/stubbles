@@ -1,0 +1,1 @@
+$('#stories #<%= @story.id %>').html('<%= escape_javascript(render :partial => 'row_form', :locals => {:story => @story, :project => @project}) %>');

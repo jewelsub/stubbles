@@ -36,6 +36,7 @@ class ProjectMembershipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to project_project_memberships_url(@project) }
       format.json { head :ok }
+      format.js
     end
 
   end

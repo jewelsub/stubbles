@@ -1,6 +1,6 @@
-<tr>
+<tr id='<%= membership.id %>'>
 	<td><%= membership.user.name %></td>
 	<td><%= membership.user.email %></td>
 	<td><%= membership.role %></td>
-	<td><%= link_to 'Destroy', project_project_membership_path(project, membership), :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to 'Destroy', project_project_membership_path(project, membership), :confirm => 'Are you sure?', :method => :delete, :remote=>true %></td>
 </tr>

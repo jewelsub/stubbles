@@ -33,6 +33,11 @@ class StoriesController < ApplicationController
   # GET /stories/1/edit
   def edit
     @story = @project.stories.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render :json => @story }
+      format.js
+    end
   end
 
   # POST /stories
@@ -60,9 +65,11 @@ class StoriesController < ApplicationController
       if @story.update_attributes(params[:story])
         format.html { redirect_to [@project, @story], :notice => 'Story was successfully updated.' }
         format.json { head :ok }
+        format.js
       else
         format.html { render :action => "edit" }
         format.json { render :json => @story.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end

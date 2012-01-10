@@ -1,0 +1,10 @@
+<%= form_for([project, story], :remote=>true) do |f| %>
+<div>
+	<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
+	<span><%= f.select(:assigned_to_id, User.find(:all).collect {|u| [u.email, u.id]}, :prompt => 'Select') %></span>
+	<p><%= f.text_field :description %></p>
+	<div>
+		<%= f.submit %>
+	</div>
+</div>
+<% end %>
