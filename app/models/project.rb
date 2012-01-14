@@ -5,8 +5,8 @@ class Project < ActiveRecord::Base
   belongs_to :creator, :class_name => 'User', :readonly => :true
 
   after_create :add_creator_as_project_admin
-  def members
-    self.users.where("role = #{Role::MEMBER}")
+  def collaborators
+    self.users.where("project_memberships.role = '#{Role::MEMBER}' OR project_memberships.role = '#{Role::ADMIN}'")
   end
 
   private

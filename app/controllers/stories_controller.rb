@@ -5,8 +5,9 @@ class StoriesController < ApplicationController
     @stories = @project.stories
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render :json => @stories }
+      format.js
     end
   end
 
@@ -16,17 +17,17 @@ class StoriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @story }
+      format.js
     end
   end
 
-  # GET /stories/new
-  # GET /stories/new.json
   def new
     @story = @project.stories.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @story }
+      format.js
     end
   end
 

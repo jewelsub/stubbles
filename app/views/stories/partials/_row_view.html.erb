@@ -1,0 +1,11 @@
+<div>
+	<h3><%= story.title %></h3><span><%= story.status %></span><br/>
+	<span><%= assigned_person_for(story) %></span>
+	<p><%= story.description %></p>
+	<div>
+		<%= link_to 'Show', project_story_path(story.project, story) %>
+		<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true %>
+		<%= link_to 'Destroy', project_story_path(story.project, story), :confirm => 'Are you sure?', :method => :delete %>
+		<%= link_to 'Tasks', story_tasks_path(story) %>
+	</div>
+</div>

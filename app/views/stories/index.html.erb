@@ -4,7 +4,7 @@
 <ul id='stories'>
 <% @stories.each do |story| %>
 	<li id='<%= story.id %>'>
-	<%= render :partial => 'row_view', :locals => {:story => story, :project => @project} %>
+	<%= render :partial => 'stories/partials/row_view', :locals => {:story => story} %>
 	</li>
 <% end %>
 
@@ -12,4 +12,4 @@
 
 <br />
 
-<%= link_to 'New Story', new_project_story_path(@project.id) %>
+<%= link_to "New story", {:action => "new"}, :remote => true %>
