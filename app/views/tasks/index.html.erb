@@ -1,29 +1,16 @@
-<h1>Listing tasks</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Status</th>
-    <th>Story</th>
-    <th>Assigned to</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul>
 <% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.title %></td>
-    <td><%= task.status %></td>
-    <td><%= task.story.title %></td>
-    <td><%= task.assigned_to.name %></td>
-    <td><%= link_to 'Show', story_task_path(@story, task) %></td>
-    <td><%= link_to 'Edit', edit_story_task_path(@story, task) %></td>
-    <td><%= link_to 'Destroy', story_task_path(@story, task), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <span><%= task.title %></span>
+    <span><%= task.status %></span>
+    <span><%= task.assigned_to.name %></span>
+    <div>
+    	<%= link_to 'Edit', edit_story_task_path(@story, task) %>
+    	<%= link_to 'Destroy', story_task_path(@story, task), :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+  </li>
 <% end %>
-</table>
-
+</ul>
 <br />
 
 <%= link_to 'New Task', new_story_task_path(@story) %>

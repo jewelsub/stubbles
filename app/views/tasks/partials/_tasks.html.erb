@@ -1,0 +1,16 @@
+<ul>
+<% tasks.each do |task| %>
+  <li>
+    <span><%= task.title %></span>
+    <span><%= task.status %></span>
+    <span><%= task.assigned_to.name %></span>
+    <div>
+    	<%= link_to 'Edit', edit_story_task_path(story, task) %>
+    	<%= link_to 'Destroy', story_task_path(story, task), :confirm => 'Are you sure?', :method => :delete %>
+	</div>
+  </li>
+<% end %>
+</ul>
+<br />
+
+<%= link_to 'New Task', new_story_task_path(story) %>

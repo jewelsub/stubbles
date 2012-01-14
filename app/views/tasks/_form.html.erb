@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :assigned_to_id %><br />
-    <%= f.select(:assigned_to_id, User.find(:all).collect {|u| [u.email, u.id]}, :prompt => 'Select') %>
+	<%= f.select(:assigned_to_id, @story.project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %>
   </div>
   <div class="field">
     <%= f.label :hours_estimated %><br />

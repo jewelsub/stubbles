@@ -1,1 +1,1 @@
-$('#stories #<%= @story.id %>').html('<%= escape_javascript(render :partial => 'stories/partials/row_view', :locals => {:story => @story}) %>');
+$('#<%= container_id_of(@story) %>').html('<%= escape_javascript(render :partial => 'stories/partials/row_view', :locals => {:story => @story}) %>');

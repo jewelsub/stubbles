@@ -1,7 +1,7 @@
 <% project = story.project %>
 
 <%= form_for([project, story], :remote=>true) do |f| %>
-<li id='<%= story.id %>'>
+<li id='<%= container_id_of(story) %>'>
 	<div>
 		<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
 		<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
