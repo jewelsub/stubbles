@@ -1,12 +1,14 @@
 <% project = story.project %>
 
 <%= form_for([project, story], :remote=>true) do |f| %>
-<div>
-	<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
-	<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
-	<p><%= f.text_field :description %></p>
+<li id='<%= story.id %>'>
 	<div>
-		<%= f.submit %> <%= link_to "cancel", {:action => "show"}, :remote => true %>
+		<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
+		<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
+		<p><%= f.text_area :description %></p>
+		<div>
+			<%= f.submit %> <%= ajax_cancel_link(story) %>
+		</div>
 	</div>
-</div>
+</li>
 <% end %>

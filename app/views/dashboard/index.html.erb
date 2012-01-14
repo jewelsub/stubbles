@@ -5,8 +5,9 @@
 <% @stories.each do |story| %>
 	<%= render :partial => 'stories/partials/row_view', :locals => {:story => story} %>
 <% end %>
+
 </ul>
 
 <br />
 
-<%= link_to "New story", {:action => "new"}, :remote => true %>
+<%= link_to 'New story', new_project_story_path(@project), :remote=>true %>

@@ -7,7 +7,7 @@ class Story < ActiveRecord::Base
 
   workflow_column :status
   workflow do
-    state :new do
+    state :not_started do
       event :start, :transitions_to => :started
     end
     state :started do

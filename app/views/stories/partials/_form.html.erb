@@ -16,16 +16,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
   <div class="field">
     <%= f.label :assigned_to %><br />
-    <%= f.select(:assigned_to_id, User.find(:all).collect {|u| [u.email, u.id]}, :prompt => 'Select') %>
+    <%= f.select(:assigned_to_id, @project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %>
   </div>
   <div class="actions">
     <%= f.submit %>

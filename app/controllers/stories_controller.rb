@@ -25,9 +25,9 @@ class StoriesController < ApplicationController
     @story = @project.stories.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @story }
       format.js
+      format.html
+      format.json { render :json => @story }
     end
   end
 
@@ -48,11 +48,13 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to [@project, @story], :notice => 'Story was successfully created.' }
+        format.html { redirect_to project_stories_path(@project), :notice => 'Story was successfully created.' }
         format.json { render :json => @story, :status => :created, :location => @story }
+        format.js
       else
         format.html { render :action => "new" }
         format.json { render :json => @story.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -82,8 +84,9 @@ class StoriesController < ApplicationController
     @story.destroy
 
     respond_to do |format|
-      format.html { redirect_to stories_url }
+      format.html { redirect_to :back }
       format.json { head :ok }
+      format.js
     end
   end
   

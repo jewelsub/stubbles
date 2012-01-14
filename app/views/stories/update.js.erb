@@ -1,1 +1,1 @@
-$('#stories #<%= @story.id %>').html('<%= escape_javascript(render :partial => 'stories/partials/row_view', :locals => {:story => @story}) %>');
+$('#stories #<%= @story.id %>').replaceWith('<%= escape_javascript(render :partial => 'stories/partials/row_view', :locals => {:story => @story}) %>');

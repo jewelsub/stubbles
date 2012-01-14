@@ -6,6 +6,7 @@ Stubbles::Application.routes.draw do
   resources :projects do
     resources :stories
     resources :project_memberships
+    resources :dashboard
   end
 
   resources :stories do
