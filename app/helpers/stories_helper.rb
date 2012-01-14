@@ -4,12 +4,12 @@ module StoriesHelper
   end
   
   def ajax_cancel_link(story)
-    if(story.id)
+    if(!story.new?)
       link_to "cancel", {:action => "show"}, :remote => true
     end
   end
   
   def container_id_of(story)
-    story.id || 'new'
+    story.new? ? 'new' : story.id
   end
 end

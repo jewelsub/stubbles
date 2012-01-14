@@ -1,6 +1,6 @@
 <li id='<%= container_id_of(story) %>'>
 	<div>
-		<h3><%= story.title %></h3><span><%= story.status %></span><br/>
+		<h3><%= story.title %></h3><span><%= story.status.humanize %></span><br/>
 		<span><%= assigned_person_for(story) %></span>
 		<p><%= story.description %></p>
 		<div>

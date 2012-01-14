@@ -21,4 +21,7 @@ class Story < ActiveRecord::Base
     state :rejected
   end
 
+  def new?
+    self.id ? false : true
+  end
 end
