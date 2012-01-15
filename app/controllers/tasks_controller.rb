@@ -27,6 +27,7 @@ class TasksController < ApplicationController
     @task = @story.tasks.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render :json => @task }
     end
@@ -44,9 +45,11 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        format.js
         format.html { redirect_to [@story, @task], :notice => 'Task was successfully created.' }
         format.json { render :json => @task, :status => :created, :location => @task }
       else
+        format.js
         format.html { render :action => "new" }
         format.json { render :json => @task.errors, :status => :unprocessable_entity }
       end
@@ -62,9 +65,11 @@ class TasksController < ApplicationController
       if @task.update_attributes(params[:task])
         format.html { redirect_to [@story, @task], :notice => 'Task was successfully updated.' }
         format.json { head :ok }
+        format.js
       else
         format.html { render :action => "edit" }
         format.json { render :json => @task.errors, :status => :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -76,6 +81,7 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
+      format.js
       format.html { redirect_to tasks_url }
       format.json { head :ok }
     end

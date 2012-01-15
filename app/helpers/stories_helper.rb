@@ -12,8 +12,9 @@ module StoriesHelper
     end
   end
   
-  def container_id_of(story)
-    story.new? ? 'new' : "story_#{story.id}"
+  def container_id_of(model)
+    container_init = model.class.name == 'Story' ? 'story' : 'task'
+    model.new? ? 'new' : "#{container_init}_#{model.id}"
   end
 
   def container_id_of_tasks_for(story)

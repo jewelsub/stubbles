@@ -1,0 +1,23 @@
+<% story = task.story %>
+
+<%= form_for([story, task], :remote=>true) do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :assigned_to_id %><br />
+	<%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_estimated %><br />
+    <%= f.text_field :hours_estimated %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_spent %><br />
+    <%= f.text_field :hours_spent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

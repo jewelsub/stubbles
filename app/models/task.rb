@@ -15,4 +15,7 @@ class Task < ActiveRecord::Base
     state :finished
   end
 
+  def new?
+    self.id ? false : true
+  end
 end

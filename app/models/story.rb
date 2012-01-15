@@ -21,6 +21,10 @@ class Story < ActiveRecord::Base
     state :rejected
   end
 
+  def assignable_users
+    project.collaborators
+  end
+
   def new?
     self.id ? false : true
   end

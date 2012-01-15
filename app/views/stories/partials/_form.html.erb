@@ -1,29 +1,14 @@
-<%= form_for([@project, @story]) do |f| %>
-  <% if @story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+<% project = story.project %>
 
-      <ul>
-      <% @story.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :assigned_to %><br />
-    <%= f.select(:assigned_to_id, @project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= form_for([project, story], :remote=>true) do |f| %>
+<li id='<%= container_id_of(story) %>'>
+	<div>
+		<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
+		<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
+		<p><%= f.text_area :description %></p>
+		<div>
+			<%= f.submit %> <%= ajax_cancel_link(story) %>
+		</div>
+	</div>
+</li>
 <% end %>
