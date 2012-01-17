@@ -1,1 +1,2 @@
 $('#edit_<%= container_id_of(@story) %>').replaceWith('<%= escape_javascript(render :partial => 'stories/partials/view', :locals => {:story => @story}) %>');
+$('#<%= container_id_of(@story) %>').addPortletClassesToDom();

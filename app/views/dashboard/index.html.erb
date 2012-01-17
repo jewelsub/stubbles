@@ -1,13 +1,11 @@
 <h1><%= @project.name %></h1>
 <h2>Stories</h2>
 
-<ul id='stories'>
+<div id='stories' class="story_column">
 <% @stories.each do |story| %>
 	<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
 <% end %>
-
-</ul>
+</div>
 
 <br />
-
 <%= link_to 'New story', new_project_story_path(@project), :remote=>true %>

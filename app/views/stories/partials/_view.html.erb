@@ -1,17 +1,19 @@
-<li id='<%= container_id_of(story) %>'>
+<div id='<%= container_id_of(story) %>' class="portlet">
 	<div>
-		<div>
+		<div class="portlet-header"></span>
 			<h3 style="display: inline;"><%= story.title %></h3>
+		</div>
+		<div class="portlet-content" style="display: block; ">
+			<span><%= story.status.humanize %></span><br/>
+			<span><%= assigned_person_for(story) %></span>
+			<p><%= story.description %></p>
 			<div class="actions" style="display: inline-block;">
 				<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true %>
 				<%= link_to 'Destroy', project_story_path(story.project, story), :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
+				<div id='<%= container_id_of_tasks_for(story) %>' style="display: inline-block;">
+					<%= link_to 'Tasks', story_tasks_path(story), :remote=>true %>
+				</div>
 			</div>
 		</div>
-		<span><%= story.status.humanize %></span><br/>
-		<span><%= assigned_person_for(story) %></span>
-		<p><%= story.description %></p>
-		<div id='<%= container_id_of_tasks_for(story) %>'>
-			<%= link_to 'Tasks', story_tasks_path(story), :remote=>true %>
-		</div>
 	</div>
-</li>
+</div>

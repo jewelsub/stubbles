@@ -1,14 +1,19 @@
 <% project = story.project %>
 
 <%= form_for([project, story], :remote=>true) do |f| %>
-<li id='<%= container_id_of(story) %>'>
+<div id='<%= container_id_of(story) %>' class="portlet">
 	<div>
-		<h3><%= f.text_field :title %></h3><span><%= story.status %></span><br/>
-		<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
-		<p><%= f.text_area :description %></p>
-		<div>
-			<%= f.submit %> <%= ajax_cancel_link(story) %>
+		<div class="portlet-header">
+			<%= f.text_field :title %>
+		</div>
+		<div class="portlet-content" style="display: block; ">
+			<span><%= story.status %></span><br/>
+			<span><%= f.select(:assigned_to_id, project.collaborators.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
+			<p><%= f.text_area :description, :size => "25x5" %></p>
+			<div>
+				<%= f.submit %> <%= ajax_cancel_link(story) %>
+			</div>
 		</div>
 	</div>
-</li>
+</div>
 <% end %>
