@@ -1,7 +1,9 @@
 <li id='<%= container_id_of(task) %>'>
 	<span><%= task.title %></span>
 	<span><%= task.status %></span>
-	<span><%= task.assigned_to.name %></span>
+	<span><%= assigned_person_for(task) %></span>
+	<span>Estimated: <%= task.hours_estimated %></span>
+	<span>Actual: <%= task.hours_spent %></span>
 	<div>
 		<%= link_to 'Edit', edit_story_task_path(task.story, task), :remote=>true %>
 		<%= link_to 'Destroy', story_task_path(task.story, task), :confirm => 'Are you sure?', :method => :delete, :remote=>true %>

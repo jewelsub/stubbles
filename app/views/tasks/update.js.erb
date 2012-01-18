@@ -1,1 +1,2 @@
 $('#edit_<%= container_id_of(@task) %>').replaceWith('<%= escape_javascript(render :partial => 'tasks/partials/view', :locals => {:task => @task}) %>');
+$('#<%= container_id_of(@task.story) %>_hours').html('<%= escape_javascript(render :partial => 'stories/partials/story_hours', :locals => {:story => @task.story}) %>');

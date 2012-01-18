@@ -1,1 +1,2 @@
 $('#<%= container_id_of_tasks_for(@task.story) %> .tasks form:last').replaceWith('<%= escape_javascript(render :partial => 'tasks/partials/view', :locals => {:task => @task}) %>');
+$('#<%= container_id_of(@task.story) %>_hours').html('<%= escape_javascript(render :partial => 'stories/partials/story_hours', :locals => {:story => @task.story}) %>');

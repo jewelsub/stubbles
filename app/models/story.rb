@@ -28,4 +28,12 @@ class Story < ActiveRecord::Base
   def new?
     self.id ? false : true
   end
+  
+  def total_hours_estimated
+    hours_estimated || tasks.sum(:hours_estimated)
+  end
+
+  def total_hours_spent
+    hours_spent || tasks.sum(:hours_spent)
+  end
 end

@@ -1,7 +1,10 @@
 <div id='<%= container_id_of(story) %>' class="portlet">
 	<div>
-		<div class="portlet-header"></span>
+		<div class="portlet-header">
 			<h3 style="display: inline;"><%= story.title %></h3>
+			<div id='<%= container_id_of(story) %>_hours' style="display: inline-block; float: right;">
+				<%= render :partial => 'stories/partials/story_hours', :locals => {:story => story} %>
+			</div>
 		</div>
 		<div class="portlet-content" style="display: block; ">
 			<span><%= story.status.humanize %></span><br/>

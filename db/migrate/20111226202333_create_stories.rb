@@ -6,6 +6,9 @@ class CreateStories < ActiveRecord::Migration
       t.text :description
       t.references :project
       t.references :assigned_to
+      t.float :hours_estimated
+      t.float :hours_spent
+      t.date :deadline
 
       t.timestamps
     end

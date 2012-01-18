@@ -8,9 +8,10 @@
 //= require jquery_ujs
 //= require jquery-ui
 
-
 //adding the sortability in the sortable_column
 // as well as adding the appropriate classes for the widget
+var SORTABLE_COLUMN_SELECTOR = ".sortable_column";
+
 (function( $ ){
   $.fn.addPortletClassesToDom = function() {
     this.addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
@@ -20,7 +21,7 @@
 			.end()
 		.find( ".portlet-content" );
 
-	$( this, ".portlet-header .ui-icon" ).click(function() {
+	$(this).find( ".portlet-header .ui-icon" ).click(function() {
 		$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
 		$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
 	});
@@ -29,9 +30,9 @@
 })( jQuery );
 
 $(function() {
-	$( ".sortable_column" ).sortable({
-		connectWith: ".column"
+	$(SORTABLE_COLUMN_SELECTOR).sortable({
+		connectWith: SORTABLE_COLUMN_SELECTOR
 	});
 	$( ".portlet" ).addPortletClassesToDom ();
-	$( ".sortable_column" ).disableSelection();
+	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
 });

@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(:version => 20111229151700) do
     t.text     "description"
     t.integer  "project_id"
     t.integer  "assigned_to_id"
+    t.float    "hours_estimated"
+    t.float    "hours_spent"
+    t.date     "deadline"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

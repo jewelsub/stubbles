@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :title
       t.string :status
       t.references :story
-      t.integer :assigned_to_id
+      t.references :assigned_to
       t.float :hours_estimated
       t.float :hours_spent
       t.date :deadline

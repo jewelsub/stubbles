@@ -1,6 +1,6 @@
 module StoriesHelper
-  def assigned_person_for(story)
-    story.assigned_to.nil? ? 'Yet to be assigned' : story.assigned_to.name
+  def assigned_person_for(model)
+    model.assigned_to.nil? ? 'n/a' : model.assigned_to.name
   end
   
   def ajax_cancel_link(story)
@@ -12,11 +12,6 @@ module StoriesHelper
     end
   end
   
-  def container_id_of(model)
-    container_init = model.class.name == 'Story' ? 'story' : 'task'
-    model.new? ? 'new' : "#{container_init}_#{model.id}"
-  end
-
   def container_id_of_tasks_for(story)
     "#{container_id_of(story)}_tasks"
   end
