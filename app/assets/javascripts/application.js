@@ -13,14 +13,7 @@
 var SORTABLE_COLUMN_SELECTOR = ".sortable_column";
 
 (function( $ ){
-  $.fn.addPortletClassesToDom = function() {
-    this.addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-		.find( ".portlet-header" )
-			.addClass( "ui-widget-header ui-corner-all" )
-			.prepend( "<span class='ui-icon ui-icon-minusthick'></span>")
-			.end()
-		.find( ".portlet-content" );
-
+  $.fn.updateDom = function() {
 	$(this).find( ".portlet-header .ui-icon" ).click(function() {
 		$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
 		$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
@@ -33,6 +26,6 @@ $(function() {
 	$(SORTABLE_COLUMN_SELECTOR).sortable({
 		connectWith: SORTABLE_COLUMN_SELECTOR
 	});
-	$( ".portlet" ).addPortletClassesToDom ();
+	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
 });
