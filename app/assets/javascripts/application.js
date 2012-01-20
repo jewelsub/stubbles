@@ -33,6 +33,6 @@ $(function() {
 	$(SORTABLE_COLUMN_SELECTOR).sortable({
 		connectWith: SORTABLE_COLUMN_SELECTOR
 	});
-	$( ".portlet" ).addPortletClassesToDom ();
+	//$( ".portlet" ).addPortletClassesToDom ();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
 });

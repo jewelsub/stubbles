@@ -1,22 +1,24 @@
-<div id='<%= container_id_of(story) %>' class="portlet">
-	<div>
-		<div class="portlet-header">
-			<h3 style="display: inline;"><%= story.title %></h3>
-			<div id='<%= container_id_of(story) %>_hours' style="display: inline-block; float: right;">
-				<%= render :partial => 'stories/partials/story_hours', :locals => {:story => story} %>
-			</div>
+<% content_for_widget(container_id_of(story)) do  %>
+	<div class="portlet-header ui-widget-header ui-corner-all">
+		<span class="ui-icon ui-icon-minusthick"></span>
+		<h3 style="display: inline;"><%= story.title %></h3>
+		<div id='<%= container_id_of(story) %>_hours' style="display: inline-block; float: right;">
+			<%= render :partial => 'stories/partials/story_hours', :locals => {:story => story} %>
 		</div>
-		<div class="portlet-content" style="display: block; ">
-			<span><%= story.status.humanize %></span><br/>
-			<span><%= assigned_person_for(story) %></span>
-			<p><%= story.description %></p>
-			<div class="actions" style="display: inline-block;">
-				<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true %>
-				<%= link_to 'Destroy', project_story_path(story.project, story), :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
-				<div id='<%= container_id_of_tasks_for(story) %>' style="display: inline-block;">
-					<%= render :partial => 'tasks/partials/tasks', :locals => {:story => story, :tasks => story.tasks} %>
-				</div>
+	</div>
+	<div class="portlet-content" style="display: block; ">
+		<span><%= story.status.humanize %></span>
+		<br/>
+		<span><%= assigned_person_for(story) %></span>
+		<p>
+			<%= story.description %>
+		</p>
+		<div class="actions" style="display: inline-block;">
+			<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true %>
+			<%= link_to 'Destroy', project_story_path(story.project, story), :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
+			<div id='<%= container_id_of_tasks_for(story) %>' style="display: inline-block;">
+				<%= render :partial => 'tasks/partials/tasks', :locals => {:story => story, :tasks => story.tasks} %>
 			</div>
 		</div>
 	</div>
-</div>
+<% end %>
