@@ -25,10 +25,6 @@ class Story < ActiveRecord::Base
     project.collaborators
   end
 
-  def new?
-    self.id ? false : true
-  end
-  
   def total_hours_estimated
     hours_estimated || tasks.sum(:hours_estimated)
   end
