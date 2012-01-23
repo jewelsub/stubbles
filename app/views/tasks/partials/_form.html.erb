@@ -1,5 +1,5 @@
 <% story = task.story %>
-
+<li id="<%= container_id_of(task) %>">
 <%= form_for([story, task], :remote=>true) do |f| %>
 	<div class="field">
 		<%= f.text_field :title, :size => '47' %>
@@ -14,6 +14,7 @@
 		<%= f.text_field :hours_spent, :size => '2' %>
 	</div>
 	<div class="actions" style="display: inline-block">
-		<%= f.submit %>
+		<%= f.submit %> <%= ajax_cancel_link(story) %>
 	</div>
 <% end %>
+</li>
