@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111229151700) do
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.string   "status"
+    t.string   "scope",           :default => "backlog"
     t.text     "description"
     t.integer  "project_id"
     t.integer  "assigned_to_id"

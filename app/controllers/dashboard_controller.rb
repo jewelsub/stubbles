@@ -4,6 +4,8 @@ class DashboardController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @stories = @project.stories
+    @current_stories = @project.stories.current
+    @backlog_stories = @project.stories.backlog
 
     respond_to do |format|
       format.html

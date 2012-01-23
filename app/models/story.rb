@@ -4,6 +4,8 @@ class Story < ActiveRecord::Base
   belongs_to :project
   belongs_to :assigned_to, :class_name => "User", :foreign_key => "assigned_to_id"
   has_many :tasks
+  scope :current, where(:scope => Scope::CURRENT)
+  scope :backlog, where(:scope => Scope::BACKLOG)
 
   workflow_column :status
   workflow do
