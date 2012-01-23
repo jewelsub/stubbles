@@ -28,4 +28,7 @@ $(function() {
 	});
 	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
+	$('.submittable').live('change', function() {
+		$(this).parents('form:first').submit();
+	});
 });

@@ -5,7 +5,11 @@ Stubbles::Application.routes.draw do
 
   resources :projects do
     resources :stories
-    resources :project_memberships
+    resources :project_memberships do
+      member do
+        put 'update_role'
+      end
+    end
     resources :dashboard
   end
 
@@ -13,8 +17,8 @@ Stubbles::Application.routes.draw do
     resources :tasks
   end
 
-  get 'users/:id' => 'users#show', :as => 'user'
-  get 'user/search' => 'users#search_new', :as => 'new_user_search'
+  get  'users/:id' => 'users#show', :as => 'user'
+  get  'user/search' => 'users#search_new', :as => 'new_user_search'
   post 'user/search' => 'users#search', :as => 'user_search'
 
 end

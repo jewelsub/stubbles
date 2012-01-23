@@ -1,6 +1,10 @@
 <tr id='<%= membership.id %>'>
 	<td><%= membership.user.name %></td>
 	<td><%= membership.user.email %></td>
-	<td><%= membership.role %></td>
+	<td>
+		<%= form_for(update_role_project_project_membership_path(project, membership), :remote => true) do |f| %>
+			<%= f.select(:role, Role::all, :class => 'submittable') %>
+		<% end %>
+	</td>
 	<td><%= link_to 'Destroy', project_project_membership_path(project, membership), :confirm => 'Are you sure?', :method => :delete, :remote=>true %></td>
 </tr>
