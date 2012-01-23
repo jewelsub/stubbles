@@ -4,4 +4,12 @@ class ProjectMembership < ActiveRecord::Base
 
   validates :role, :inclusion => { :in => %w(member admin stakeholder), :message => "%{value} is not a valid role" }
 
+  def activate
+  	update_attribute(:active, true)
+  end
+
+  def deactivate
+  	update_attribute(:active, false)
+  end
+
 end

@@ -1,10 +1,15 @@
-<tr id='<%= membership.id %>'>
+<tr id='<%= container_id_of(membership) %>'>
 	<td><%= membership.user.name %></td>
 	<td><%= membership.user.email %></td>
 	<td>
-		<%= form_for(update_role_project_project_membership_path(project, membership), :remote => true) do |f| %>
-			<%= f.select(:role, Role::all, :class => 'submittable') %>
+		<%= form_tag(update_role_project_project_membership_path(project, membership), :method=> :put, :remote => true) do |f| %>
+			<%= select_tag('role',options_for_select(Role::all, :selected => membership.role), {:class => 'submittable'}) %>
 		<% end %>
 	</td>
-	<td><%= link_to 'Destroy', project_project_membership_path(project, membership), :confirm => 'Are you sure?', :method => :delete, :remote=>true %></td>
+	<td>
+		<%= deactivate_link(membership, 
+			activate_project_project_membership_path(project, membership),
+			deactivate_project_project_membership_path(project, membership)) %>
+
+	</td>
 </tr>

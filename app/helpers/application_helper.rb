@@ -76,4 +76,9 @@ module ApplicationHelper
     end
   end
 
+  def deactivate_link(model, activate_path, deactivate_path)
+    text = model.active? ? 'Deactivate' : 'Activate'
+    path = model.active? ? deactivate_path :  activate_path
+    return link_to text, path, :confirm => 'Are you sure?', :method => :put, :remote=>true
+  end
 end
