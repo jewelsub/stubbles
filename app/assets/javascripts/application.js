@@ -24,7 +24,8 @@ var SORTABLE_COLUMN_SELECTOR = ".sortable_column";
 
 $(function() {
 	$(SORTABLE_COLUMN_SELECTOR).sortable({
-		connectWith: SORTABLE_COLUMN_SELECTOR
+		connectWith: SORTABLE_COLUMN_SELECTOR,
+		receive: storyMoved
 	});
 	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
@@ -32,3 +33,7 @@ $(function() {
 		$(this).parents('form:first').submit();
 	});
 });
+
+function storyMoved( event, storyElement ){
+	alert(storyElement);
+}
