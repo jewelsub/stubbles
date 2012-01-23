@@ -21,9 +21,9 @@ class Story < ActiveRecord::Base
     state :rejected
   end
 
+  #TODO: add validation so that no user can be added that is not in the following list
   def assignable_users
-    collaborators = project.collaborators
-    collaborators << self.assigned_to if assigned?
+    project.collaborators
   end
 
   def total_hours_estimated
