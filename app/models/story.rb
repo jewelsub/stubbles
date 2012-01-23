@@ -22,7 +22,8 @@ class Story < ActiveRecord::Base
   end
 
   def assignable_users
-    project.collaborators
+    collaborators = project.collaborators
+    collaborators << self.assigned_to if assigned?
   end
 
   def total_hours_estimated
@@ -31,5 +32,9 @@ class Story < ActiveRecord::Base
 
   def total_hours_spent
     hours_spent || tasks.sum(:hours_spent)
+  end
+
+  def assigned?
+    !self.assigned_to.nil?
   end
 end

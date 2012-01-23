@@ -6,7 +6,8 @@ class Project < ActiveRecord::Base
 
   after_create :add_creator_as_project_admin
   def collaborators
-    self.users.where("project_memberships.role = '#{Role::MEMBER}' OR project_memberships.role = '#{Role::ADMIN}'")
+    self.users.where("(project_memberships.role = ? OR project_memberships.role = ?) 
+                        AND active = ?", Role::ADMIN, Role::MEMBER, true)
   end
 
   private
