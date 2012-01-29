@@ -10,7 +10,7 @@
 
 //adding the sortability in the sortable_column
 // as well as adding the appropriate classes for the widget
-var SORTABLE_COLUMN_SELECTOR = ".sortable_column";
+var SORTABLE_COLUMN_SELECTOR = ".story_column";
 
 (function( $ ){
   $.fn.updateDom = function() {
@@ -25,6 +25,8 @@ var SORTABLE_COLUMN_SELECTOR = ".sortable_column";
 $(function() {
 	$(SORTABLE_COLUMN_SELECTOR).sortable({
 		connectWith: SORTABLE_COLUMN_SELECTOR,
+		forcePlaceholderSize: true,
+		handle: '.portlet-header',
 		receive: storyMoved
 	});
 	$( ".portlet" ).updateDom();
@@ -35,5 +37,5 @@ $(function() {
 });
 
 function storyMoved( event, storyElement ){
-	alert(storyElement);
+	$(this).closest('div.story_column').css('background-color', 'red');
 }

@@ -1,13 +1,13 @@
 <h1><%= @project.name %></h1>
 <h2>Current stories</h2>
-<div id='current_stories' class="story_column sortable_column">
+<div id='current_stories' class="story_column">
 	<% @current_stories.each do |story| %>
 		<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
 	<% end %>
 </div>
 
 <h2>Backlog</h2>
-<div id='backlog_stories' class="story_column sortable_column">
+<div id='backlog_stories' class="story_column">
 	<% @backlog_stories.each do |story| %>
 		<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
 	<% end %>
