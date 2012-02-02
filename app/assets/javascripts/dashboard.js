@@ -18,5 +18,16 @@ $(function() {
 });
 
 function storyMoved( event, ui ){
-	alert($(this).closest('div.story_column').attr('data-scope'));
+	var scope = $(this).closest('div.story_column').attr('data-scope');
+	alert($(this).closest('div.portlet').attr('id'));
+	/*
+	$.ajax({
+	  type: "PUT",
+	  url: "/stories/:story_id/tasks/:id",
+	  data: "name=John&location=Boston",
+	  dataType: 'json'
+	}).done(function( msg ) {
+	  alert( "Data Saved: " + msg );
+	});
+	*/
 }
