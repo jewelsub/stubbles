@@ -1,4 +1,4 @@
-<% box_container(container_id_of(story)) do %>
+<% box_container(container_id_of(story), {:'data-id' => story.id}) do %>
 	<% box_header do %>
 		<h3 style="display: inline;"><%= story.title %></h3>
 		<div id='<%= container_id_of(story) %>_hours' style="display: inline-block; float: right;">

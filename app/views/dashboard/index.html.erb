@@ -1,13 +1,13 @@
 <h1><%= @project.name %></h1>
 <h2>Current stories</h2>
-<div id='current_stories' class="story_column">
+<div id='current_stories' class="story_column" data-scope="<%= Scope::CURRENT %>">
 	<% @current_stories.each do |story| %>
 		<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
 	<% end %>
 </div>
 
 <h2>Backlog</h2>
-<div id='backlog_stories' class="story_column">
+<div id='backlog_stories' class="story_column" data-scope="<%= Scope::BACKLOG %>">
 	<% @backlog_stories.each do |story| %>
 		<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
 	<% end %>
@@ -15,3 +15,5 @@
 
 <br />
 <%= link_to 'New story', new_project_story_path(@project), :remote=>true %>
+
+<%= javascript_include_tag "dashboard" %>
