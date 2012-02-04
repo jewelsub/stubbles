@@ -1,4 +1,5 @@
 <h1><%= @project.name %></h1>
+
 <h2>Current stories</h2>
 <div id='current_stories' class="story_column" data-scope="<%= Scope::CURRENT %>">
 	<% @current_stories.each do |story| %>
@@ -14,6 +15,10 @@
 </div>
 
 <br />
+
+<div id="dialog" title="Dialog">
+</div>
+
 <%= link_to 'New story', new_project_story_path(@project), :remote=>true %>
 
 <%= javascript_include_tag "dashboard" %>
