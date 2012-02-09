@@ -80,7 +80,10 @@ class StoriesController < ApplicationController
   # PUT /stories/1
   # PUT /stories/1.json
   def update_scope_and_priority
-    puts params
+    scope = params[:scope]
+    story_ids = params[:story_ids]
+    project_id = params[:project_id]
+    Story.update_scope_and_priority(project_id, scope, story_ids)
   end
 
   # DELETE /stories/1

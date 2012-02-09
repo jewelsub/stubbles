@@ -39,4 +39,8 @@ class Story < ActiveRecord::Base
   def assigned?
     !self.assigned_to.nil?
   end
+
+  def self.update_scope_and_priority(project_id, scope, ordered_ids)
+    
+  end
 end
