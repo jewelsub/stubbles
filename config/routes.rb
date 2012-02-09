@@ -4,7 +4,11 @@ Stubbles::Application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :stories #, :only => [:index, :show]
+    resources :stories do #, :only => [:index, :show]
+      member do
+        post 'update_scope_and_priority'
+      end
+    end
     resources :project_memberships do
       member do
         put 'update_role'

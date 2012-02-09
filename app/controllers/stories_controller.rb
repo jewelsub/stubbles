@@ -77,6 +77,12 @@ class StoriesController < ApplicationController
     end
   end
 
+  # PUT /stories/1
+  # PUT /stories/1.json
+  def update_scope_and_priority
+    puts params
+  end
+
   # DELETE /stories/1
   # DELETE /stories/1.json
   def destroy
