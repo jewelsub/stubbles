@@ -5,7 +5,7 @@ Stubbles::Application.routes.draw do
 
   resources :projects do
     resources :stories do #, :only => [:index, :show]
-      member do
+      collection do
         post 'update_scope_and_priority'
       end
     end

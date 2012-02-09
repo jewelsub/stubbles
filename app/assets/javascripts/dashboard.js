@@ -14,24 +14,21 @@ $(function() {
 			//storyElements = storyElements.replace('story_', '');
 			//storyElements = storyElements.join(', ');
 
-			var storiesJson = [];
 			for(var i = 0, len = storyIds.length; i < len; i++) {
-				var storyJson = { "id" : storyIds[i] };
-				storiesJson.push(storyJson);
+				storyIds[i] = storyIds[i].replace('story_', '');
 			}
 
 			var changes = { 
-				"projectId": PROJECT_ID,
 				"scope": scope,
-			    "stories": storiesJson
+			    "story_ids": storyIds
 			}
-			showMessage(changes);
+			updateChanges(changes);
 		}
 	});
 	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
 });
 
-function updateChanges( changes ){
-	$.post("test.php", changes );
+function updateChanges(changes){
+	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", changes );
 }
