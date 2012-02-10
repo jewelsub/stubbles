@@ -6,6 +6,7 @@ class Story < ActiveRecord::Base
   has_many :tasks
   scope :current, where(:scope => Scope::CURRENT)
   scope :backlog, where(:scope => Scope::BACKLOG)
+  scope :prioritized, order('priority')
 
   before_create :autogenerate_priority
 
@@ -44,7 +45,15 @@ class Story < ActiveRecord::Base
 
   def self.update_scope_and_priority(project_id, scope, ordered_ids)
     project = Project.find(project_id)
-    ordered_stories = project.stories.find(ordered_ids)
+
+    priorities = project.stories(ordered_ids).map(&:priority)
+    priorities.sort {|x,y| y <=> x }
+
+    ordered_ids.each_with_index { |story_id, index|
+      story = project.stories.find(story_id)
+      puts "story id: #{story.id} prev_priority: #{story.priority} new_priority: #{priorities[index]}\n"
+      story.update_attributes({:scope => scope, :priority => priorities[index]})
+    }
   end
 
   private
