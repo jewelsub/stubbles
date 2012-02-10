@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20111229151700) do
     t.float    "hours_estimated"
     t.float    "hours_spent"
     t.date     "deadline"
+    t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -10,6 +10,7 @@ class CreateStories < ActiveRecord::Migration
       t.float :hours_estimated
       t.float :hours_spent
       t.date :deadline
+      t.integer :priority
 
       t.timestamps
     end

@@ -7,6 +7,8 @@ class Story < ActiveRecord::Base
   scope :current, where(:scope => Scope::CURRENT)
   scope :backlog, where(:scope => Scope::BACKLOG)
 
+  before_create :autogenerate_priority
+
   workflow_column :status
   workflow do
     state :not_started do
@@ -41,6 +43,13 @@ class Story < ActiveRecord::Base
   end
 
   def self.update_scope_and_priority(project_id, scope, ordered_ids)
-    
+    project = Project.find(project_id)
+    ordered_stories = project.stories.find(ordered_ids)
+  end
+
+  private
+  def autogenerate_priority
+    max_priority = project.stories.maximum('priority') || 0
+    self.priority = max_priority + 1
   end
 end
