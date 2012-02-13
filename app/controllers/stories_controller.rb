@@ -31,7 +31,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # GET /stories/1/edit
   def edit
     @story = @project.stories.find(params[:id])
     respond_to do |format|
@@ -41,8 +40,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # POST /stories
-  # POST /stories.json
   def create
     @story = @project.stories.new(params[:story])
 
@@ -59,8 +56,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # PUT /stories/1
-  # PUT /stories/1.json
   def update
     @story = @project.stories.find(params[:id])
 
@@ -77,8 +72,18 @@ class StoriesController < ApplicationController
     end
   end
 
-  # PUT /stories/1
-  # PUT /stories/1.json
+  def update_status
+    @story = @project.stories.find(params[:id])
+
+    respond_to do |format|
+      if @story.send("#{params[:event]}!")
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
   def update_scope_and_priority
     scope = params[:scope]
     story_ids = params[:story_ids]
@@ -86,8 +91,6 @@ class StoriesController < ApplicationController
     Story.update_scope_and_priority(project_id, scope, story_ids)
   end
 
-  # DELETE /stories/1
-  # DELETE /stories/1.json
   def destroy
     @story = @project.stories.find(params[:id])
     @story.destroy
