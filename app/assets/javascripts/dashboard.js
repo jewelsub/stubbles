@@ -30,5 +30,8 @@ $(function() {
 });
 
 function updateChanges(changes){
-	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", changes );
+	startLoading();
+	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", 
+		changes
+    ).complete(function() { stopLoading(); });
 }

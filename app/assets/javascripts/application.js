@@ -17,6 +17,9 @@
 			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
 			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
 		});
+		$('input.ajax, a.ajax').click(function() {
+			startLoading();
+		});
 		return this;
 	};
 })( jQuery );
@@ -26,8 +29,23 @@ $(function() {
 		$(this).parents('form:first').submit();
 	});
 	$("#dialog").hide();
+	$("#loading").hide();
 });
 
 function showMessage(message){
 	$("#dialog").html(message).dialog();
+}
+
+function startLoading(){
+	$("#loading").dialog({ 
+		modal: true,
+		resizable: false,
+		closeOnEscape: false,
+		width: 260,
+		height: 80
+	});
+}
+
+function stopLoading(){
+	$("#loading").dialog("close");
 }

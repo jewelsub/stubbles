@@ -10,7 +10,7 @@
 			<span><%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
 			<p><%= f.text_area :description, :size => "25x5" %></p>
 			<div>
-				<%= f.submit %> <%= ajax_cancel_link(story) %>
+				<%= f.submit(:class => 'ajax') %> <%= ajax_cancel_link(story) %>
 			</div>
 		<% end %>
 	<% end %>

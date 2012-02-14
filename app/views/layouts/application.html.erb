@@ -19,7 +19,9 @@
 <p id="notice"><%= notice %></p>
 <%= yield %>
 
-<div id="dialog" title="Dialog">
+<div id="dialog" title="Dialog"></div>
+<div id="loading" title="Please wait">
+  <%= image_tag('/images/ajax-loader.gif') %>
 </div>
 </body>
 </html>
