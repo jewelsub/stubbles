@@ -9,6 +9,7 @@ class Story < ActiveRecord::Base
   scope :prioritized, order('priority')
 
   before_create :autogenerate_priority
+  before_create :assign_default_scope
 
   workflow_column :status
   workflow do
@@ -56,9 +57,25 @@ class Story < ActiveRecord::Base
     }
   end
 
+  ######################### Priority ##########################
+  def self.lowest_priority_by_scope(project, scope)
+    priority = project.stories.where('scope' => scope).minimum('priority') || 1
+  end
+
+  def self.shift_priority_from(project, priority, shift_by = 1)
+    project.stories.update_all("priority = priority + #{shift_by}", ['priority >= ?', priority])
+  end
+  ######################### Priority ##########################
+
   private
   def autogenerate_priority
-    max_priority = project.stories.maximum('priority') || 0
-    self.priority = max_priority + 1
+    min_priority_in_scope = Story.lowest_priority_by_scope(project, Scope::BACKLOG)
+    puts "Priority to assign :: #{min_priority_in_scope}"
+    Story.shift_priority_from(project, min_priority_in_scope)
+    self.priority = min_priority_in_scope
+  end
+
+  def assign_default_scope
+    self.scope = Scope::BACKLOG
   end
 end

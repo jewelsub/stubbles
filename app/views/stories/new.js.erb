@@ -1,1 +1,1 @@
-$('#stories').append('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
+$('#backlog_stories').prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');

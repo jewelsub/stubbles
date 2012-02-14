@@ -9,12 +9,12 @@ module StoriesHelper
 
   def action_links_for_story(story)
   	content_tag :div, :style => 'display: inline-block;' do
-		form_tag(update_status_project_story_path(story.project, story), :method => :put, :remote=>true) do
-			story.current_state.events.keys.each do |event|
-				concat(submit_tag(event, :name => 'event', :value => event, :class => 'strong'))
-			end
+  		form_tag(update_status_project_story_path(story.project, story), :method => :put, :remote=>true) do
+  			story.current_state.events.keys.each do |event|
+  				concat(submit_tag(event, :name => 'event', :value => event, :class => event))
+  			end
   		end
-	end
+  	end
   end
 
 end
