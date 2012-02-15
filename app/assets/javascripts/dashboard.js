@@ -27,6 +27,10 @@ $(function() {
 	});
 	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
+	$("#toggleCollapse").click(function() {
+		toggleCollapse();
+	});
+	toggleCollapse();
 });
 
 function updateChanges(changes){
@@ -34,4 +38,8 @@ function updateChanges(changes){
 	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", 
 		changes
     ).complete(function() { stopLoading(); });
+}
+
+function toggleCollapse() {
+	$(".portlet-header .ui-icon").click();
 }

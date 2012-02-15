@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stubbles</title>
+  <%= stylesheet_link_tag    'application', 'dashboard' %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-ui.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="wrap">
+  <div id="nav">
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %>. Not you?
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path %> or 
+      <%= link_to "sign in", new_user_session_path %>
+    <% end %>
+    <p id="notice"><%= notice %></p>
+  </div>
+  <%= yield %>
+  <div id="footer">
+    <p></p>
+  </div>
+</div>
+
+<div id="dialog" title="Dialog"></div>
+<div id="loading" title="Please wait">
+  <%= image_tag('/images/ajax-loader.gif') %>
+</div>
+</body>
+</html>

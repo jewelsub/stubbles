@@ -2,14 +2,16 @@
 	<% box_header do %>
 		<h3 style="display: inline;"><%= story.title %></h3>
 		<div style="display: inline-block; float: right;">
-			<span>Estd: <%= story.total_hours_estimated %></span>
-			<span>Spent: <%= story.total_hours_spent %></span>
 			<%= action_links_for_story(story) %>
 		</div>
 	<% end %>
 	<% box_content do %>
 		<span><%= story.status.humanize %></span><br/>
 		<span><%= assigned_person_for(story) %></span>
+		<div>
+			<span>Est: <%= story.total_hours_estimated %></span>
+			<span>Sp: <%= story.total_hours_spent %></span>
+		</div>
 		<p><%= story.description %></p>
 		<div class="actions" style="display: inline-block;">
 			<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true,

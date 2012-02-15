@@ -23,8 +23,10 @@ class Story < ActiveRecord::Base
       event :accept, :transitions_to => :accepted
       event :reject, :transitions_to => :rejected
     end
+    state :rejected do
+      event :reopen, :transitions_to => :started
+    end
     state :accepted
-    state :rejected
   end
 
   #TODO: add validation so that no user can be added that is not in the following list

@@ -17,9 +17,6 @@
 			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
 			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
 		});
-		$('input.ajax, a.ajax').click(function() {
-			startLoading();
-		});
 		return this;
 	};
 })( jQuery );
@@ -30,10 +27,18 @@ $(function() {
 	});
 	$("#dialog").hide();
 	$("#loading").hide();
+	$(".button").button();
+	attachAjaxLoading();
 });
 
 function showMessage(message){
 	$("#dialog").html(message).dialog();
+}
+
+function attachAjaxLoading(){
+	$('input.ajax, a.ajax').click(function() {
+		startLoading();
+	});
 }
 
 function startLoading(){
