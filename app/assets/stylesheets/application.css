@@ -8,8 +8,48 @@
 
 .story_column { width: 480px; float: left; padding-bottom: 100px; }
 .portlet { margin: 0 1em 1em 0; }
-.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
-.portlet-header .ui-icon { float: right; }
+.portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; cursor: move;}
+.portlet-header .ui-icon { float: right; cursor: pointer;}
 .portlet-content { padding: 0.4em; }
-.ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+.ui-sortable-placeholder { 
+	border: 1px dotted black;
+	visibility:
+	visible !important;
+	height: 50px !important; }
 .ui-sortable-placeholder * { visibility: hidden; }
+
+/* Here is the button theme */
+.button, .button:visited {
+	padding: 3px 10px 6px 10px;
+	display: inline;
+	background: #777 url(/images/button.png) repeat-x bottom;
+	border-width:1px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-shadow: 1px 1px #666;
+	cursor: pointer;
+	text-decoration:none;
+}
+.button:hover							{ background-color: #111; color: #fff; }
+.button:active							{ top: 1px; }
+.small.button, .small.button:visited	{ font-size: 13px}
+.button, .button:visited,
+.medium.button, .medium.button:visited {
+	font-size: 15px; 
+	font-weight: bold; 
+	line-height: 1; 
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+}
+
+.accept.button			{ background-color: #91bd09; }
+.accept.button:hover	{ background-color: #749a02; }
+.reject.button			{ background-color: #e62727; }
+.reject.button:hover	{ background-color: #cf2525; }
+.finish.button			{ background-color: #2981e4; }
+.finish.button:hover	{ background-color: #2575cf; }
+.start.button			{ background-color: #ffb515; }
+.start.button:hover		{ background-color: #fc9200; } 

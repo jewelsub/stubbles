@@ -14,7 +14,7 @@
 $(function() {
 	$("#dialog").hide();
 	$("#loading").hide();
-	$(".button").button();
+	//$(".button").button();
 
 	addSubmitalbeElemntInForm();
 	addCollapseToggleForPortlet();
@@ -69,7 +69,7 @@ function attachCancelSupport(){
 	$('a[data-cancel]').live('click',
 		function(){
 			var elementToClose = $(this).attr("data-cancel");
-			$(this).closest(elementToClose).remove();
+			$(this).closest(elementToClose).slideUp("fast");
 		}
 	);
 }
