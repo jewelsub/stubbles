@@ -36,7 +36,7 @@ module ApplicationHelper
 
   def ajax_cancel_link(model)
     if(!model.new_record?)
-      link_to "cancel", {:action => "show"}, :remote => true, :class => 'ajax'
+      link_to "cancel", {:action => "show"}, :remote => true
     else
       #TODO: Add UJS for deleting the parent form
       link_to "cancel", '#', :'data-cancel' => :form

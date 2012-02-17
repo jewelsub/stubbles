@@ -2,8 +2,7 @@
 	<h1 style="float: left;"><%= @project.name %></h1>
 	<span style="float: right;">
 		<a id="toggleCollapse" class="button" href="#">Toggle collapse</a>
-		<%= link_to 'New story', new_project_story_path(@project), :remote=>true, 
-			:class => 'ajax, button' %>
+		<%= link_to 'New story', new_project_story_path(@project), :remote=>true, :class => 'button' %>
 	</span>
 </div>
 <div style="clear: both;"></div>

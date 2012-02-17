@@ -27,12 +27,11 @@ function showMessage(message){
 }
 
 function attachAjaxLoading(){
-	$('a[data-remote="true"]').live('ajax:complete',
-	  function(e, xhr, status){
-	    stopLoading();
-	  }
-	);
-	$('a[data-remote="true"]').live('ajax:before',
+	//this is a global handler that stop is there is any loading going on
+	$('body').bind('ajaxComplete', function() {
+		stopLoading();
+	});
+	$('a[data-remote="true"], form[data-remote="true"]').live('ajax:before',
 	  function(e, data, textStatus, jqXHR){
 	    startLoading();
 	  }
@@ -43,7 +42,7 @@ function startLoading(){
 	$("#loading").dialog({ 
 		modal: true,
 		resizable: false,
-		closeOnEscape: false,
+		closeOnEscape: true,
 		width: 260,
 		height: 80
 	});
@@ -54,9 +53,9 @@ function stopLoading(){
 }
 
 function addCollapseToggleForPortlet() {
-	$(".portlet-header .ui-icon" ).live('click', function() {
-		$(this).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
-		$(this).parents( ".portlet:first" ).find( ".portlet-content" ).toggle("fast");;
+	$(".portlet-header .ui-icon").live('click', function() {
+		$(this).toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+		$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
 	});
 }
 
