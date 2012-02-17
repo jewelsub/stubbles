@@ -7,12 +7,8 @@ $(function() {
 		forcePlaceholderSize: true,
 		handle: '.portlet-header',
 		stop: function(event, ui){
-			//var storyId = ui.item.attr('id').split('_')[1];
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
 			var storyIds = ui.item.closest(SORTABLE_COLUMN_SELECTOR).sortable('toArray');
-			//showMessage(storyId + ' ' + PROJECT_ID + ' ' + scope);
-			//storyElements = storyElements.replace('story_', '');
-			//storyElements = storyElements.join(', ');
 
 			for(var i = 0, len = storyIds.length; i < len; i++) {
 				storyIds[i] = storyIds[i].replace('story_', '');
@@ -25,7 +21,6 @@ $(function() {
 			updateChanges(changes);
 		}
 	});
-	$( ".portlet" ).updateDom();
 	$(SORTABLE_COLUMN_SELECTOR).disableSelection();
 	$("#toggleCollapse").click(function() {
 		toggleCollapse();

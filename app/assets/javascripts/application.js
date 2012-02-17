@@ -11,24 +11,15 @@
 //adding the sortability in the sortable_column
 // as well as adding the appropriate classes for the widget
 
-(function( $ ){
-	$.fn.updateDom = function() {
-		$(this).find( ".portlet-header .ui-icon" ).click(function() {
-			$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
-			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
-		});
-		return this;
-	};
-})( jQuery );
-
 $(function() {
-	$('.submittable').live('change', function() {
-		$(this).parents('form:first').submit();
-	});
 	$("#dialog").hide();
 	$("#loading").hide();
 	$(".button").button();
+
+	addSubmitalbeElemntInForm();
+	addCollapseToggleForPortlet();
 	attachAjaxLoading();
+	attachCancelSupport();
 });
 
 function showMessage(message){
@@ -36,9 +27,16 @@ function showMessage(message){
 }
 
 function attachAjaxLoading(){
-	$('input.ajax, a.ajax').click(function() {
-		startLoading();
-	});
+	$('a[data-remote="true"]').live('ajax:complete',
+	  function(e, xhr, status){
+	    stopLoading();
+	  }
+	);
+	$('a[data-remote="true"]').live('ajax:before',
+	  function(e, data, textStatus, jqXHR){
+	    startLoading();
+	  }
+	);
 }
 
 function startLoading(){
@@ -53,4 +51,26 @@ function startLoading(){
 
 function stopLoading(){
 	$("#loading").dialog("close");
+}
+
+function addCollapseToggleForPortlet() {
+	$(".portlet-header .ui-icon" ).live('click', function() {
+		$(this).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+		$(this).parents( ".portlet:first" ).find( ".portlet-content" ).toggle("fast");;
+	});
+}
+
+function addSubmitalbeElemntInForm() {
+	$('.submittable').live('change', function() {
+		$(this).parents('form:first').submit();
+	});
+}
+
+function attachCancelSupport(){
+	$('a[data-cancel]').live('click',
+		function(){
+			var elementToClose = $(this).attr("data-cancel");
+			$(this).closest(elementToClose).remove();
+		}
+	);
 }

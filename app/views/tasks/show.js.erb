@@ -1,3 +1,2 @@
 $('#<%= container_id_of(@task) %>').html(
 	'<%= escape_javascript(render :partial => 'tasks/partials/view', :locals => {:task => @task}) %>');
-stopLoading();
