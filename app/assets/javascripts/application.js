@@ -69,7 +69,9 @@ function attachCancelSupport(){
 	$('a[data-cancel]').live('click',
 		function(){
 			var elementToClose = $(this).attr("data-cancel");
-			$(this).closest(elementToClose).slideUp("fast");
+			$(this).closest(elementToClose).slideUp('fast', function() {
+    			$(this).remove();
+			});
 		}
 	);
 }

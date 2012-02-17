@@ -1,3 +1,4 @@
+$('#backlog_stories .new_story').remove();
 $('#backlog_stories').prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
 $('#backlog_stories .new_story').hide();
 $('#backlog_stories .new_story').slideDown("fast");
