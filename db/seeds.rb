@@ -16,3 +16,5 @@ stubbles.memberships.create(:user => setu, :role => Role::MEMBER)
 
 stubbles.stories.create(:title => 'Story 1', :assigned_to => jitu)
 stubbles.stories.create(:title => 'Story 2', :assigned_to => setu)
+stubbles.stories.create(:title => 'Story 3', :assigned_to => setu, :scope => Scope::CURRENT)
+stubbles.stories.create(:title => 'Story 4', :assigned_to => setu)

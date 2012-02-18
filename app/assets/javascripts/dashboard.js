@@ -12,7 +12,7 @@ $(function() {
 			var storyElem = ui.item;
 			var storyId = storyElem.attr("id").replace('story_', '');
 			var nextStoryElem = storyElem.next(".story");
-			var nextStoryId = nextStoryElem == null ? 0 : nextStoryElem.attr("id").replace('story_', '');
+			var nextStoryId = nextStoryElem.length == 0 ? 0 : nextStoryElem.attr("id").replace('story_', '');
 
 			var changes = { 
 				"scope": scope,
