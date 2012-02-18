@@ -11,7 +11,9 @@ module StoriesHelper
   	content_tag :div, :style => 'display: inline-block;' do
   		form_tag(update_status_project_story_path(story.project, story), :method => :put, :remote=>true) do
   			story.current_state.events.keys.each do |event|
-  				concat(submit_tag(event, :name => 'event', :value => event, :class => "#{event} button small"))
+  				concat(submit_tag(event, :name => 'event', :value => event, 
+                            :class => "#{event} button small",
+                            :'data-disable-with' => "#{event}ing..."))
   			end
   		end
   	end

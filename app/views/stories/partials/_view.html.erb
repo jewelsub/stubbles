@@ -1,4 +1,4 @@
-<% box_container(container_id_of(story), {:'data-id' => story.id}) do %>
+<% box_container(container_id_of(story), {:'class' => 'story'}) do %>
 	<% box_header do %>
 		<h3 style="display: inline;"><%= story.title %></h3>
 		<div style="display: inline-block; float: right;">
@@ -14,10 +14,12 @@
 		</div>
 		<p><%= story.description %></p>
 		<div class="actions">
-			<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true %>
+			<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true,
+				:'data-disable-with' => "Loading..." %>
 			<%= link_to 'Destroy', project_story_path(story.project, story), 
-						:confirm => 'Are you sure?', 
-						:method => :delete, :remote=>true %>
+				:confirm => 'Are you sure?', 
+				:method => :delete, :remote=>true,
+				:'data-disable-with' => "Deleting..." %>
 			<div id='<%= container_id_of_tasks_for(story) %>'>
 				<%= render :partial => 'tasks/partials/tasks', :locals => {:story => story, :tasks => story.tasks} %>
 			</div>

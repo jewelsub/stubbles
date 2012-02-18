@@ -31,7 +31,7 @@ function attachAjaxLoading(){
 	$('body').bind('ajaxComplete', function() {
 		stopLoading();
 	});
-	$('a[data-remote="true"], form[data-remote="true"]').live('ajax:before',
+	$('a[data-start-loading="true"], form[data-start-loading="true"]').live('ajax:before',
 	  function(e, data, textStatus, jqXHR){
 	    startLoading();
 	  }

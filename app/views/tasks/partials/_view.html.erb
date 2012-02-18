@@ -9,7 +9,10 @@
 		<span><%= assigned_person_for(task) %></span>
 	</div>
 	<div>
-		<%= link_to 'Edit', edit_story_task_path(task.story, task), :remote=>true %>
-		<%= link_to 'Destroy', story_task_path(task.story, task), :confirm => 'Are you sure?', :method => :delete, :remote=>true %>
+		<%= link_to 'Edit', edit_story_task_path(task.story, task), :remote=>true,
+			:'data-disable-with' => "Loading..." %>
+		<%= link_to 'Destroy', story_task_path(task.story, task), 
+			:confirm => 'Are you sure?', :method => :delete, 
+			:remote=>true, :'data-disable-with' => "Deleting..." %>
 	</div>
 </li>

@@ -9,6 +9,8 @@ $(function() {
 		stop: function(event, ui){
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
 			var storyIds = ui.item.closest(SORTABLE_COLUMN_SELECTOR).sortable('toArray');
+			var storyElem = ui.item;
+			var nextStoryElem = storyElem.next(".story");
 
 			for(var i = 0, len = storyIds.length; i < len; i++) {
 				storyIds[i] = storyIds[i].replace('story_', '');
@@ -16,7 +18,7 @@ $(function() {
 
 			var changes = { 
 				"scope": scope,
-			    "story_ids": storyIds
+				"story_ids": storyIds
 			}
 			updateChanges(changes);
 		}
@@ -32,7 +34,7 @@ function updateChanges(changes){
 	startLoading();
 	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", 
 		changes
-    ).complete(function() { stopLoading(); });
+	).complete(function() { stopLoading(); });
 }
 
 function toggleCollapse() {

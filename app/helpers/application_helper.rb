@@ -4,9 +4,11 @@ module ApplicationHelper
   end
   
   def box_container(containerId, options = {})
-    options_as_array = options.collect{ |key, value| "#{key} = \"#{value}\"" }
+    custom_class = options[:class]
+    options.delete(:class)
+    options_as_array = options.collect{ |key, value| "#{key} = \"#{value}\""}
   	concat <<-EOF.html_safe
-    	<div id='#{containerId}' #{options_as_array.join(' ')} class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+    	<div id='#{containerId}' #{options_as_array.join(' ')} class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all #{custom_class}">
   	EOF
 	yield
   	concat <<-EOF.html_safe
@@ -36,10 +38,9 @@ module ApplicationHelper
 
   def ajax_cancel_link(model)
     if(!model.new_record?)
-      link_to "cancel", {:action => "show"}, :remote => true
+      link_to "cancel", {:action => "show"}, :remote => true, :'data-disable-with' => "canceling..."
     else
-      #TODO: Add UJS for deleting the parent form
-      link_to "cancel", '#', :'data-cancel' => :form
+      link_to "cancel", '#', :'data-cancel' => :form, :'data-disable-with' => "canceling..."
     end
   end
 
