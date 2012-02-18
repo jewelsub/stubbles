@@ -8,17 +8,16 @@ $(function() {
 		handle: '.portlet-header',
 		stop: function(event, ui){
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
-			var storyIds = ui.item.closest(SORTABLE_COLUMN_SELECTOR).sortable('toArray');
+			//var storyIds = ui.item.closest(SORTABLE_COLUMN_SELECTOR).sortable('toArray');
 			var storyElem = ui.item;
+			var storyId = storyElem.attr("id").replace('story_', '');
 			var nextStoryElem = storyElem.next(".story");
-
-			for(var i = 0, len = storyIds.length; i < len; i++) {
-				storyIds[i] = storyIds[i].replace('story_', '');
-			}
+			var nextStoryId = nextStoryElem == null ? 0 : nextStoryElem.attr("id").replace('story_', '');
 
 			var changes = { 
 				"scope": scope,
-				"story_ids": storyIds
+				"story_id": storyId,
+				"shift_from_story_id": nextStoryId
 			}
 			updateChanges(changes);
 		}

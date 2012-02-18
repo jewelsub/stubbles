@@ -46,20 +46,20 @@ class Story < ActiveRecord::Base
     !self.assigned_to.nil?
   end
 
-  def self.update_scope_and_priority(project_id, scope, ordered_ids)
+  ######################### Priority ##########################
+  def self.update_scope_and_priority(project_id, scope, story_id, shift_from_story_id)
     project = Project.find(project_id)
-
-    priorities = project.stories(ordered_ids).map(&:priority)
-    priorities.sort {|x,y| y <=> x }
-
-    ordered_ids.each_with_index { |story_id, index|
-      story = project.stories.find(story_id)
-      puts "story id: #{story.id} prev_priority: #{story.priority} new_priority: #{priorities[index]}\n"
-      story.update_attributes({:scope => scope, :priority => priorities[index]})
-    }
+    priority_to_assign = nil
+    if(shift_from_story_id == 0)
+      priority_to_assign = Story.lowest_priority_by_scope(project, scope) + 1
+    else
+      priority_to_assign = Story.find(shift_from_story_id).priority
+    end
+    shift_priority_from(project, priority_to_assign)
+    #puts "story id: #{story.id} prev_priority: #{story.priority} new_priority: #{priorities[index]}\n"
+    Story.find(story_id).update_attributes({:scope => scope, :priority => priority_to_assign})
   end
 
-  ######################### Priority ##########################
   def self.lowest_priority_by_scope(project, scope)
     priority = project.stories.where('scope' => scope).minimum('priority') || 1
   end
