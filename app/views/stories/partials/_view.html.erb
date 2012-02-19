@@ -3,6 +3,13 @@
 		<h3 style="display: inline;"><%= story.title %></h3>
 		<div style="display: inline-block; float: right;">
 			<%= action_links_for_story(story) %>
+			<%= link_to 'Edit', edit_project_story_path(story.project, story),
+								:remote=>true, :class => 'edit icon',
+								:'data-disable-with' => "Loading..." %>
+			<%= link_to 'Destroy', project_story_path(story.project, story), 
+				:confirm => 'Are you sure?', :class => 'delete icon',
+				:method => :delete, :remote=>true,
+				:'data-disable-with' => "Deleting..."%>
 		</div>
 	<% end %>
 	<% box_content do %>
@@ -12,14 +19,8 @@
 			<span>Est: <%= story.total_hours_estimated %></span>
 			<span>Sp: <%= story.total_hours_spent %></span>
 		</div>
-		<p><%= story.description %></p>
+		<p><%=raw story.description %></p>
 		<div class="actions">
-			<%= link_to 'Edit', edit_project_story_path(story.project, story), :remote=>true,
-				:'data-disable-with' => "Loading..." %>
-			<%= link_to 'Destroy', project_story_path(story.project, story), 
-				:confirm => 'Are you sure?', 
-				:method => :delete, :remote=>true,
-				:'data-disable-with' => "Deleting..." %>
 			<div id='<%= container_id_of_tasks_for(story) %>'>
 				<%= render :partial => 'tasks/partials/tasks', :locals => {:story => story, :tasks => story.tasks} %>
 			</div>

@@ -49,5 +49,21 @@ h2 {
 	height:1px;
 }
 
-ul {margin:0; padding:0;}
-li {list-style: none;}
+.story .portlet-header .icon { margin: 5px 0px 0px 5px; }
+
+ol.tasks {margin:0px -5px 0px -5px; padding:0px;}
+ol.tasks li {
+	list-style: none;
+	background-color: #EFEFEF;
+	border-bottom: 1px solid #999;
+	border-top: 1px solid #DDD;
+}
+.icon.edit, .icon.delete {float: left;}
+.task_header {
+	background-color: #DDDDEE;
+}
+
+.task_header, .task_container {
+	padding: 1px 5px 1px 5px;
+}
+.task_header .icon { margin: 2px 0px 0px 5px; }

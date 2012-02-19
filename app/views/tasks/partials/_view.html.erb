@@ -1,18 +1,22 @@
 <li id='<%= container_id_of(task) %>'>
-	<div>
+	<div class="task_header">
 		<span><%= task.title %></span>
-		<span>Est: <%= task.hours_estimated %></span>
-		<span>Ac: <%= task.hours_spent %></span>
+		<div style="display: inline-block; float: right;">
+			<%= link_to 'Edit', edit_story_task_path(task.story, task), 
+				:remote=>true, :class => 'edit icon',
+				:'data-disable-with' => "Loading..." %>
+			<%= link_to 'Destroy', story_task_path(task.story, task), 
+				:confirm => 'Are you sure?', 
+				:method => :delete, :class => 'delete icon', 
+				:remote=>true, :'data-disable-with' => "Deleting..." %>
+		</div>
 	</div>
-	<div>
+	<div class="task_container">
 		<span><%= task.status %></span>
 		<span><%= assigned_person_for(task) %></span>
-	</div>
-	<div>
-		<%= link_to 'Edit', edit_story_task_path(task.story, task), :remote=>true,
-			:'data-disable-with' => "Loading..." %>
-		<%= link_to 'Destroy', story_task_path(task.story, task), 
-			:confirm => 'Are you sure?', :method => :delete, 
-			:remote=>true, :'data-disable-with' => "Deleting..." %>
+		<div style="display: inline-block; float: right;">
+			<span>Est: <%= task.hours_estimated %></span>
+			<span>Ac: <%= task.hours_spent %></span>
+		</div>
 	</div>
 </li>

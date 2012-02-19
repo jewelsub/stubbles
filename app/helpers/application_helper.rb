@@ -10,7 +10,7 @@ module ApplicationHelper
   	concat <<-EOF.html_safe
     	<div id='#{containerId}' #{options_as_array.join(' ')} class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all #{custom_class}">
   	EOF
-	yield
+  	yield
   	concat <<-EOF.html_safe
     	</div>
   	EOF
@@ -18,9 +18,9 @@ module ApplicationHelper
 
   def box_header()
   	concat <<-EOF.html_safe
-    	<div class="portlet-header ui-widget-header ui-corner-all"><span class="ui-icon ui-icon-minusthick"></span>
+    	<div class="portlet-header ui-widget-header ui-corner-all"><span class="icon collapse"></span>
   	EOF
-	yield
+    yield
   	concat <<-EOF.html_safe
     	</div>
   	EOF
@@ -30,17 +30,17 @@ module ApplicationHelper
   	concat <<-EOF.html_safe
     	<div class="portlet-content" style="display: block; ">
   	EOF
-	yield
+    yield
   	concat <<-EOF.html_safe
     	</div>
   	EOF
   end
 
-  def ajax_cancel_link(model)
+  def ajax_cancel_link(model, removeElement = :form)
     if(!model.new_record?)
       link_to "cancel", {:action => "show"}, :remote => true, :'data-disable-with' => "canceling..."
     else
-      link_to "cancel", '#', :'data-cancel' => :form, :'data-disable-with' => "canceling..."
+      link_to "cancel", '#', :'data-cancel' => removeElement, :'data-disable-with' => "canceling..."
     end
   end
 

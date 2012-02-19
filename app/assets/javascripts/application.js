@@ -1,9 +1,3 @@
-// This is a manifest file that'll be compiled into including all the files listed below.
-// Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
-// be included in the compiled file accessible from http://example.com/assets/application.js
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
-//
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -14,7 +8,6 @@
 $(function() {
 	$("#dialog").hide();
 	$("#loading").hide();
-	//$(".button").button();
 
 	addSubmitalbeElemntInForm();
 	addCollapseToggleForPortlet();
@@ -29,6 +22,7 @@ function showMessage(message){
 function attachAjaxLoading(){
 	//this is a global handler that stop is there is any loading going on
 	$('body').bind('ajaxComplete', function() {
+		afterAjax();
 		stopLoading();
 	});
 	$('a[data-start-loading="true"], form[data-start-loading="true"]').live('ajax:before',
@@ -36,6 +30,11 @@ function attachAjaxLoading(){
 	    startLoading();
 	  }
 	);
+}
+
+function afterAjax() {
+	$('input.date').datepicker();
+	//addCollapseToggleForPortlet();
 }
 
 function startLoading(){
@@ -53,8 +52,8 @@ function stopLoading(){
 }
 
 function addCollapseToggleForPortlet() {
-	$(".portlet-header .ui-icon").live('click', function() {
-		$(this).toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+	$(".portlet-header .collapse, .portlet-header .expand").on('click', function() {
+		$(this).toggleClass("collapse").toggleClass("expand");
 		$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
 	});
 }

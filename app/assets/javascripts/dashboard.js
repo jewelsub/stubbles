@@ -8,7 +8,6 @@ $(function() {
 		handle: '.portlet-header',
 		stop: function(event, ui){
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
-			//var storyIds = ui.item.closest(SORTABLE_COLUMN_SELECTOR).sortable('toArray');
 			var storyElem = ui.item;
 			var storyId = storyElem.attr("id").replace('story_', '');
 			var nextStoryElem = storyElem.next(".story");
@@ -37,5 +36,5 @@ function updateChanges(changes){
 }
 
 function toggleCollapse() {
-	$(".portlet-header .ui-icon").click();
+	$(".portlet-header .collapse, .portlet-header .expand").click();
 }
