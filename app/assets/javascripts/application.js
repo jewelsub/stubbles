@@ -52,7 +52,7 @@ function stopLoading(){
 }
 
 function addCollapseToggleForPortlet() {
-	$(".portlet-header .collapse, .portlet-header .expand").on('click', function() {
+	$(".portlet-header .collapse, .portlet-header .expand").live('click', function() {
 		$(this).toggleClass("collapse").toggleClass("expand");
 		$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
 	});

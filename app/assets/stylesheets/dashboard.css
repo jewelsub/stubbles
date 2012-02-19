@@ -50,6 +50,7 @@ h2 {
 }
 
 .story .portlet-header .icon { margin: 5px 0px 0px 5px; }
+.story .portlet-header .button { margin: 0px 2px; }
 .story .portlet-header { margin: 2px; }
 
 ol.tasks {margin:0px -5px 0px -5px; padding:0px;}
@@ -65,6 +66,24 @@ ol.tasks li {
 }
 
 .task_header, .task_container {
-	padding: 1px 5px 1px 5px;
+	padding: 5px;
 }
 .task_header .icon { margin: 2px 0px 0px 5px; }
+
+.estimated {
+	background-color: #BBBBFF;
+	padding: 0px 5px 0px 5px;
+	border-top-left-radius: 5px 5px;
+	border-bottom-left-radius: 5px 5px;
+	border: 1px solid #999;
+	float: right;
+}
+.spent {
+	background-color: #AAFFAA;
+	padding: 0px 5px 0px 5px;
+	border-top-right-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border: 1px solid #999;
+	border-left: none;
+	float: right;
+}

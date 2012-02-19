@@ -14,9 +14,10 @@
 	<div class="task_container">
 		<span><%= task.status %></span>
 		<span><%= assigned_person_for(task) %></span>
-		<div style="display: inline-block; float: right;">
-			<span>Est: <%= task.hours_estimated %></span>
-			<span>Sp: <%= task.hours_spent %></span>
+		<div style="float: right;">
+			<%= render :partial => 'shared/estimated_and_spent_hours', 
+				:locals => {:estimated => task.hours_estimated, 
+							:spent => task.hours_spent} %>
 		</div>
 	</div>
 </li>

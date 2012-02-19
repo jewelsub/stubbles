@@ -15,9 +15,10 @@
 	<% box_content do %>
 		<span><%= story.status.humanize %></span><br/>
 		<span><%= assigned_person_for(story) %></span>
-		<div>
-			<span>Est: <%= story.total_hours_estimated %></span>
-			<span>Sp: <%= story.total_hours_spent %></span>
+		<div style="float: right;">
+			<%= render :partial => 'shared/estimated_and_spent_hours', 
+				:locals => {:estimated => story.total_hours_estimated, 
+							:spent => story.total_hours_spent} %>
 		</div>
 		<p><%=raw story.description %></p>
 		<div class="actions">

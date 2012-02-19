@@ -21,7 +21,7 @@
 
 /* Here is the button theme */
 .button, .button:visited {
-	padding: 0px 10px 3px 10px;
+	padding: 0px 5px 3px 5px;
 	display: inline;
 	background: #777 url(/images/button.png) repeat-x bottom;
 	border-width:1px;
@@ -48,11 +48,11 @@
 
 .accept.button			{ background-color: #91bd09; }
 .accept.button:hover	{ background-color: #749a02; }
-.reject.button			{ background-color: #e62727; }
+.reject.button			{ background-color: #e84444; }
 .reject.button:hover	{ background-color: #cf2525; }
-.finish.button			{ background-color: #2981e4; }
+.finish.button			{ background-color: #336996; }
 .finish.button:hover	{ background-color: #2575cf; }
-.start.button			{ background-color: #ffb515; }
+.start.button			{ background-color: #e8a344; }
 .start.button:hover		{ background-color: #fc9200; }
 
 /* icons */
