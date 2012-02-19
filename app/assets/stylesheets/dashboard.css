@@ -50,6 +50,7 @@ h2 {
 }
 
 .story .portlet-header .icon { margin: 5px 0px 0px 5px; }
+.story .portlet-header { margin: 2px; }
 
 ol.tasks {margin:0px -5px 0px -5px; padding:0px;}
 ol.tasks li {

@@ -1,1 +1,3 @@
-$('#<%= container_id_of(@story) %>').remove();
+$('#<%= container_id_of(@story) %>').slideUp("fast", function() {
+		$('#<%= container_id_of(@story) %>').remove();
+});

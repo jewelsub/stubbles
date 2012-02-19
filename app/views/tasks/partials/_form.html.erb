@@ -6,12 +6,12 @@
 	</div>
 	<%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %>
 	<div class="field" style="display: inline-block">
-		<%= f.label :estimated %><br />
-		<%= f.text_field :hours_estimated, :size => '2' %>
+		<%= f.label :est %>
+		<%= f.text_field :hours_estimated, :size => '1' %>
 	</div>
 	<div class="field" style="display: inline-block">
-		<%= f.label :spent %><br />
-		<%= f.text_field :hours_spent, :size => '2' %>
+		<%= f.label :sp %>
+		<%= f.text_field :hours_spent, :size => '1' %>
 	</div>
 	<div class="actions" style="display: inline-block">
 		<%= f.submit(:'data-disable-with' => "Saving...") %>
