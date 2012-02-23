@@ -14,7 +14,7 @@ module StoriesHelper
   			story.current_state.events.keys.each do |event|
   				concat(submit_tag(event, :name => 'event', :value => event, 
                             :class => "#{event} button small",
-                            :'data-disable-with' => "#{event}ing..."))
+                            :'data-disable-with' => 'wait'))
   			end
   		end
   	end

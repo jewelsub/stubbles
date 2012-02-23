@@ -4,4 +4,5 @@
 	<% end %>
 </ol>
 <br />
-<%= link_to 'New Task', new_story_task_path(story), :remote => true %>
+<%= link_to 'New Task', new_story_task_path(story), 
+	:remote => true, :'data-disable-with' => "Loading..." %>

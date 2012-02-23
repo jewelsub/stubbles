@@ -21,11 +21,12 @@ function showMessage(message){
 
 function attachAjaxLoading(){
 	//this is a global handler that stop is there is any loading going on
-	$('body').bind('ajaxComplete', function() {
+	$('body').on('ajaxComplete', function() {
 		afterAjax();
 		stopLoading();
 	});
-	$('a[data-start-loading="true"], form[data-start-loading="true"]').live('ajax:before',
+	$('body').on('ajax:before',
+	  'a[data-start-loading="true"], form[data-start-loading="true"]',
 	  function(e, data, textStatus, jqXHR){
 	    startLoading();
 	  }
@@ -52,20 +53,22 @@ function stopLoading(){
 }
 
 function addCollapseToggleForPortlet() {
-	$(".portlet-header .collapse, .portlet-header .expand").live('click', function() {
-		$(this).toggleClass("collapse").toggleClass("expand");
-		$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
-	});
+	$(".story_column").on('click', ".collapse, .expand", 
+		function() {
+			$(this).toggleClass("collapse").toggleClass("expand");
+			$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
+		}
+	);
 }
 
 function addSubmitalbeElemntInForm() {
-	$('.submittable').live('change', function() {
+	$('body').on('change', '.submittable', function() {
 		$(this).parents('form:first').submit();
 	});
 }
 
 function attachCancelSupport(){
-	$('a[data-cancel]').live('click',
+	$('body').on('click', 'a[data-cancel]',
 		function(){
 			var elementToClose = $(this).attr("data-cancel");
 			$(this).closest(elementToClose).slideUp('fast', function() {
