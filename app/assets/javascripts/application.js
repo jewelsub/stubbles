@@ -6,21 +6,42 @@
 $(function() {
 	$("#dialog").hide();
 	$("#loading").hide();
+	$("#notice").hide();
 
 	addSubmitalbeElemntInForm();
 	addCollapseToggleForPortlet();
 	attachAjaxLoading();
 	attachCancelSupport();
+
+	$('body').on('ready', 'input.date', function() {
+		$(this).datepicker();
+	});
+
 });
 
 function showMessage(message){
 	$("#dialog").html(message).dialog();
 }
 
+function showSlidingMessage(message, className){
+	$("#notice").removeClass().addClass(className).html(message);
+	$("#notice").slideDown("slow").delay(10000).slideUp("slow");
+	$("#notice").click(function() {
+		$("#notice").slideUp("slow");
+	});
+}
+
+function showSuccessMessage(message){
+	showSlidingMessage(message, 'success');
+}
+
+function showErrorMessage(message){
+	showSlidingMessage(message, 'error');
+}
+
 function attachAjaxLoading(){
 	//this is a global handler that stop is there is any loading going on
 	$('body').on('ajaxComplete', function() {
-		afterAjax();
 		stopLoading();
 	});
 	$('body').on('ajax:before',
@@ -29,11 +50,6 @@ function attachAjaxLoading(){
 	    startLoading();
 	  }
 	);
-}
-
-function afterAjax() {
-	$('input.date').datepicker();
-	//addCollapseToggleForPortlet();
 }
 
 function startLoading(){

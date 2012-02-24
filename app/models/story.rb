@@ -1,6 +1,8 @@
 class Story < ActiveRecord::Base
   include Workflow
 
+  validates :title, :presence => true
+
   belongs_to :project
   belongs_to :assigned_to, :class_name => "User", :foreign_key => "assigned_to_id"
   has_many :tasks

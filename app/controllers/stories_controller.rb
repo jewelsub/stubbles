@@ -48,10 +48,12 @@ class StoriesController < ApplicationController
         format.html { redirect_to project_stories_path(@project), :notice => 'Story was successfully created.' }
         format.json { render :json => @story, :status => :created, :location => @story }
         format.js
+        flash[:notice] = "Story created"
       else
         format.html { render :action => "new" }
         format.json { render :json => @story.errors, :status => :unprocessable_entity }
         format.js
+        flash[:error] = @story.errors
       end
     end
   end

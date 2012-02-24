@@ -1,1 +1,7 @@
-$('#backlog_stories .new_story').replaceWith('<%= escape_javascript(render :partial => 'stories/partials/view', :locals => {:story => @story}) %>');
+<% if @story.valid? %>
+	$('#backlog_stories .new_story').replaceWith("<%= escape_javascript(render :partial => 'stories/partials/view', :locals => {:story => @story}) %>");
+	showSuccessMessage("<%= flash[:notice] %>");
+<% else %>
+	showErrorMessage("<%= escape_javascript(render :partial => 'shared/errors', 
+					:locals => {:errors => flash[:error]}) %>");
+<% end %>
