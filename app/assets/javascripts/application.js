@@ -1,6 +1,4 @@
-//= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 
 //adding the sortability in the sortable_column
 // as well as adding the appropriate classes for the widget
