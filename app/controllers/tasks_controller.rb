@@ -49,10 +49,12 @@ class TasksController < ApplicationController
         format.js
         format.html { redirect_to [@story, @task], :notice => 'Task was successfully created.' }
         format.json { render :json => @task, :status => :created, :location => @task }
+        flash[:notice] = "Task created"
       else
         format.js
         format.html { render :action => "new" }
         format.json { render :json => @task.errors, :status => :unprocessable_entity }
+        flash[:error] = @task.errors
       end
     end
   end
@@ -67,10 +69,12 @@ class TasksController < ApplicationController
         format.html { redirect_to [@story, @task], :notice => 'Task was successfully updated.' }
         format.json { head :ok }
         format.js
+        flash[:notice] = "Task created"
       else
         format.html { render :action => "edit" }
         format.json { render :json => @task.errors, :status => :unprocessable_entity }
         format.js
+        flash[:error] = @task.errors
       end
     end
   end
@@ -85,6 +89,7 @@ class TasksController < ApplicationController
       format.js
       format.html { redirect_to tasks_url }
       format.json { head :ok }
+      flash[:notice] = "Task deleted"
     end
   end
 

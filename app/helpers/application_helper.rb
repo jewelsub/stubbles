@@ -49,4 +49,17 @@ module ApplicationHelper
     path = model.active? ? deactivate_path :  activate_path
     return link_to text, path, :confirm => 'Are you sure?', :method => :put, :remote=>true
   end
+
+  def error_message
+    escape_javascript(render :partial => 'shared/errors', :locals => {:errors => flash[:error]})
+  end
+
+  def execute_js_if(success)
+    if success
+      yield
+      concat "showSuccessMessage('#{escape_javascript(flash[:notice])}');"
+    else
+      concat "showErrorMessage('#{escape_javascript(error_message)}');"
+    end
+  end
 end

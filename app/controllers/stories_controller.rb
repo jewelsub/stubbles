@@ -66,10 +66,12 @@ class StoriesController < ApplicationController
         format.html { redirect_to [@project, @story], :notice => 'Story was successfully updated.' }
         format.json { head :ok }
         format.js
+        flash[:notice] = "Story updated"
       else
         format.html { render :action => "edit" }
         format.json { render :json => @story.errors, :status => :unprocessable_entity }
         format.js
+        flash[:error] = @story.errors
       end
     end
   end
@@ -101,6 +103,7 @@ class StoriesController < ApplicationController
       format.html { redirect_to :back }
       format.json { head :ok }
       format.js
+      flash[:notice] = "Story deleted"
     end
   end
   
