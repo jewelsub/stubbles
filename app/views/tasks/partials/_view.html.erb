@@ -2,6 +2,7 @@
 	<div class="task_header">
 		<span><%= task.title %></span>
 		<div style="display: inline-block; float: right;">
+			<%= action_links_for_task(task) %>
 			<%= link_to 'Edit', edit_story_task_path(task.story, task), 
 				:remote=>true, :class => 'edit icon',
 				:'data-disable-with' => "Loading..." %>

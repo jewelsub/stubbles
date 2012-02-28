@@ -4,8 +4,8 @@
 		<div style="display: inline-block; float: right;">
 			<%= action_links_for_story(story) %>
 			<%= link_to 'Edit', edit_project_story_path(story.project, story),
-								:remote=>true, :class => 'edit icon',
-								:'data-disable-with' => "Loading..." %>
+				:remote=>true, :class => 'edit icon',
+				:'data-disable-with' => "Loading..." %>
 			<%= link_to 'Destroy', project_story_path(story.project, story), 
 				:confirm => 'Are you sure?', :class => 'delete icon',
 				:method => :delete, :remote=>true,

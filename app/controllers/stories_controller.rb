@@ -8,7 +8,6 @@ class StoriesController < ApplicationController
 
   def show
     @story = @project.stories.find(params[:id])
-    respond_with(@story)
   end
 
   def new
@@ -35,7 +34,6 @@ class StoriesController < ApplicationController
     else
       flash[:error] = @story.errors
     end
-    respond_with(@story)
   end
 
   def update_status

@@ -23,7 +23,11 @@ Stubbles::Application.routes.draw do
   end
 
   resources :stories do
-    resources :tasks
+    resources :tasks do
+      member do
+        put 'update_status'
+      end
+    end
   end
 
   get  'users/:id' => 'users#show', :as => 'user'
