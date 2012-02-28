@@ -1,9 +1,9 @@
 <% project = story.project %>
 
-<%= form_for([project, story], :remote=>true) do |f| %>
-	<% box_container(container_id_of(story)) do %>
+<% box_container(container_id_of(story)) do %>
+	<%= form_for([project, story], :remote=>true) do |f| %>
 		<% box_header do %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, :required => true %>
 		<% end %>
 		<% box_content do %>
 			<span><%= story.status %></span><br/>
