@@ -1,13 +1,17 @@
+$(function() {
+	$("#dialog").hide();
+	$("#notice").hide().on('click', function() {
+		$(this).stop().slideUp();
+	});
+});
+
 function showMessage(message){
 	$("#dialog").html(message).dialog();
 }
 
 function showSlidingMessage(message, className){
 	$("#notice").removeClass().addClass(className).html(message);
-	$("#notice").slideDown("slow").delay(10000).slideUp("slow");
-	$("#notice").click(function() {
-		$("#notice").slideUp("slow");
-	});
+	$("#notice").slideDown().delay(10000).slideUp();
 }
 
 function showSuccessMessage(message){

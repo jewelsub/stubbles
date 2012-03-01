@@ -1,3 +1,8 @@
+$(function() {
+	$("#loading").hide();
+	attachAjaxLoading();
+});
+
 function attachAjaxLoading(){
 	//this is a global handler that stop is there is any loading going on
 	$('body').on('ajaxComplete', function() {

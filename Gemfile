@@ -21,3 +21,4 @@ end
 gem 'jquery-rails'
 gem 'workflow'
 gem 'devise'
+gem "watu_table_builder", :require => "table_builder" #for calendar view

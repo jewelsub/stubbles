@@ -111,6 +111,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    watu_table_builder (0.3.0)
     workflow (0.8.1)
 
 PLATFORMS
@@ -128,4 +129,5 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)
+  watu_table_builder
   workflow

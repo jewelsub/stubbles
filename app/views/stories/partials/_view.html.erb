@@ -1,6 +1,6 @@
 <% box_container(container_id_of(story), {:'class' => 'story'}) do %>
 	<% box_header do %>
-		<h3 style="display: inline;"><%= story.title %></h3>
+		<span><%= story.title %></span>
 		<div style="display: inline-block; float: right;">
 			<%= action_links_for_story(story) %>
 			<%= link_to 'Edit', edit_project_story_path(story.project, story),

@@ -6,13 +6,9 @@
 // as well as adding the appropriate classes for the widget
 
 $(function() {
-	$("#dialog").hide();
 	$("#loading").hide();
-	$("#notice").hide();
 
 	addSubmitalbeElemntInForm();
-	addCollapseToggleForPortlet();
-	attachAjaxLoading();
 	attachCancelSupport();
 
 	$('body').on('ready', 'input.date', function() {
@@ -20,15 +16,6 @@ $(function() {
 	});
 
 });
-
-function addCollapseToggleForPortlet() {
-	$(".story_column").on('click', ".collapse, .expand", 
-		function() {
-			$(this).toggleClass("collapse").toggleClass("expand");
-			$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");;
-		}
-	);
-}
 
 function addSubmitalbeElemntInForm() {
 	$('body').on('change', '.submittable', function() {

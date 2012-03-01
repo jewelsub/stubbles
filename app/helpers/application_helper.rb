@@ -1,6 +1,6 @@
 module ApplicationHelper
   def container_id_of(model)
-    model.new_record? ? 'new' : "#{model.class.name.downcase}_#{model.id}"
+    model.new_record? ? 'new' : "#{model.class.name.downcase}-#{model.id}"
   end
   
   def box_container(containerId, options = {})

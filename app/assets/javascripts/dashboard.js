@@ -9,9 +9,9 @@ $(function() {
 		stop: function(event, ui){
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
 			var storyElem = ui.item;
-			var storyId = storyElem.attr("id").replace('story_', '');
+			var storyId = storyElem.attr("id").replace('story-', '');
 			var nextStoryElem = storyElem.next(".story");
-			var nextStoryId = nextStoryElem.length == 0 ? 0 : nextStoryElem.attr("id").replace('story_', '');
+			var nextStoryId = nextStoryElem.length == 0 ? 0 : nextStoryElem.attr("id").replace('story-', '');
 
 			var changes = { 
 				"scope": scope,
@@ -25,7 +25,8 @@ $(function() {
 	$("#toggleCollapse").click(function() {
 		toggleCollapse();
 	});
-	toggleCollapse();
+	addCollapseToggleForPortlet();
+	hideAllPortlet();
 });
 
 function updateChanges(changes){
@@ -33,6 +34,20 @@ function updateChanges(changes){
 	$.post("/projects/" + PROJECT_ID + "/stories/update_scope_and_priority", 
 		changes
 	).complete(function() { stopLoading(); });
+}
+	
+function addCollapseToggleForPortlet() {
+	$(".story_column").on('click', ".collapse, .expand", 
+		function() {
+			$(this).toggleClass("collapse").toggleClass("expand");
+			$(this).parents(".portlet:first").find(".portlet-content").toggle("fast");
+		}
+	);
+}
+
+function hideAllPortlet() {
+	$(".portlet .portlet-content").hide();
+	$(".portlet .portlet-header").find("span:first").removeClass().addClass("icon expand");	
 }
 
 function toggleCollapse() {
