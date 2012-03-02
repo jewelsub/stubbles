@@ -21,4 +21,16 @@ class DashboardController < ApplicationController
     @end_of_week = Date.today.end_of_week
     #@days << Date.commercial(2010, week, 1)
   end
+
+  def update_time_entry
+    conditions = {  :spent_on => params[:date], 
+                    :user_id => current_user.id, 
+                    :trackable_type => params[:resource], 
+                    :trackable_id => params[:'resourceId'] }
+
+    time_entry = TimeEntry.find_or_new(conditions)
+    time_entry.hours_spent = params[:value]
+    time_entry.save
+  end
+
 end

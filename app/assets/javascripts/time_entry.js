@@ -1,4 +1,4 @@
-var url = "/projects/1/time_entry";
+var url = "/projects/1/update_time_entry";
 
 $(function() {
 	$(document).on('click', ".editable:not(.editing)", 
@@ -26,7 +26,9 @@ function makeEditable(element) {
 }
 
 function postValue(element, value) {
-	showMessage(element.data());
+	element.data("value", value);
+	var data = element.data();
+	$.post(url, data, "script");
 	doneEditing(element, value);
 }
 

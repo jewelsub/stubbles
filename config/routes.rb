@@ -34,4 +34,7 @@ Stubbles::Application.routes.draw do
   post 'user/search' => 'users#search', :as => 'user_search'
   match 'projects/:project_id/dashboard' => 'dashboard#index', :as => 'project_dashboard'
   match 'projects/:project_id/time_entry' => 'dashboard#time_entry', :as => 'project_time_entry'
+  match 'projects/:project_id/update_time_entry' => 'dashboard#update_time_entry', 
+          :as => 'update_time_entry'
+
 end
