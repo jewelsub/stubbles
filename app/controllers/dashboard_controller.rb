@@ -16,10 +16,9 @@ class DashboardController < ApplicationController
 
   def time_entry
     @project = Project.find(params[:project_id])
-    @stories = @project.stories
+    @stories = @project.stories.assigned_to(current_user)
     @beginning_of_week = Date.today.beginning_of_week
     @end_of_week = Date.today.end_of_week
-    #@days << Date.commercial(2010, week, 1)
   end
 
   def update_time_entry

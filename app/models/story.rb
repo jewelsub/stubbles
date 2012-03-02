@@ -9,6 +9,7 @@ class Story < ActiveRecord::Base
   scope :current, where(:scope => Scope::CURRENT)
   scope :backlog, where(:scope => Scope::BACKLOG)
   scope :prioritized, order('priority')
+  scope :assigned_to, lambda { |user| where(:assigned_to_id => user.id) }
 
   before_create :autogenerate_priority
   before_create :assign_default_scope

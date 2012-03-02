@@ -9,7 +9,7 @@
 	<tr>
 		<td colspan="7"><%= story.title %></td>
 	</tr>
-		<% story.tasks.each do |task| %>
+		<% story.tasks.assigned_to(current_user).each do |task| %>
 			<% if(task.assigned_to == current_user) %>
 			<tr>
 				<td>#<%= task.title %></td>
