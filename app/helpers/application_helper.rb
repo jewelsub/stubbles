@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def box_header()
   	concat <<-EOF.html_safe
-    	<div class="portlet-header ui-widget-header ui-corner-all"><span class="icon collapse"></span>
+    	<div class="portlet-header ui-widget-header ui-corner-all">
   	EOF
     yield
   	concat <<-EOF.html_safe

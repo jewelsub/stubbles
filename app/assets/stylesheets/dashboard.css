@@ -49,11 +49,14 @@ h2 {
 	height:1px;
 }
 
-.story .portlet-header .icon { margin: 5px 0px 0px 5px; }
-.story .portlet-header .button { margin: 0px 2px; }
 .story .portlet-header { margin: 2px; }
+.story .portlet-header .actions {
+	padding: 5px;
+	display: inline-block;
+	float: right;
+}
 
-ol.tasks {margin:0px -5px 0px -5px; padding:0px;}
+ol.tasks {margin:0px; padding:0px;}
 ol.tasks li {
 	list-style: none;
 	background-color: #EFEFEF;

@@ -8,7 +8,7 @@ module StoriesHelper
   end
 
   def action_links_for_story(story)
-  	content_tag :div, :style => 'float: left;' do
+  	content_tag :div, :style => 'float: left; margin-top: -4px; padding: 0px;' do
   		form_tag(update_status_project_story_path(story.project, story), 
                     :method => :put, :remote=>true) do
   			story.current_state.events.keys.each do |event|

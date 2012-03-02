@@ -1,5 +1,5 @@
 .button, .button:visited {
-	padding: 0px 5px 1px 5px;
+	padding: 0px 5px 3px 5px;
 	display: inline;
 	background: #777 url(/images/button.png) repeat-x bottom;
 	border-width:1px;

@@ -1,0 +1,24 @@
+<table>
+	<tr>
+		<td></td>
+		<% @beginning_of_week.upto(@end_of_week) do |day| %>
+			<td><%= day.strftime("%A") %></td>
+		<% end %>
+	</tr>
+	<% @stories.each do |story| %>
+	<tr>
+		<td colspan="7"><%= story.title %></td>
+	</tr>
+		<% story.tasks.each do |task| %>
+			<tr>
+				<td>#<%= task.title %></td>
+				<% @beginning_of_week.upto(@end_of_week) do |day| %>
+					<td>
+						<%= time_entry_slot_for(task, day) %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+<%= javascript_include_tag "time_entry" %>

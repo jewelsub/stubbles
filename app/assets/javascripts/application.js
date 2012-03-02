@@ -2,9 +2,6 @@
 //= require message
 //= require ajax_loader
 
-//adding the sortability in the sortable_column
-// as well as adding the appropriate classes for the widget
-
 $(function() {
 	$("#loading").hide();
 

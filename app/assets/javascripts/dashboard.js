@@ -47,7 +47,7 @@ function addCollapseToggleForPortlet() {
 
 function hideAllPortlet() {
 	$(".portlet .portlet-content").hide();
-	$(".portlet .portlet-header").find("span:first").removeClass().addClass("icon expand");	
+	$(".portlet .portlet-header").find(".icon.collapse").removeClass().addClass("icon expand");	
 }
 
 function toggleCollapse() {
