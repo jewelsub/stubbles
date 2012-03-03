@@ -4,6 +4,7 @@
 		<a id="toggleCollapse" class="button" href="#">Toggle collapse</a>
 		<%= link_to 'New story', new_project_story_path(@project), 
 			:remote=>true, :class => 'button', :'data-disable-with' => "Loading..." %>
+		<%= link_to 'Time entry', project_time_entry_path(@project.id), :class=>"button" %>
 	</div>
 </div>
 <div style="clear: both;"></div>

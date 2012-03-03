@@ -1,12 +1,24 @@
 $(function() {
 	$("#dialog").hide();
 	$("#notice").hide().on('click', function() {
-		$(this).stop().slideUp();
+		hideSlidingMessage();
 	});
+
+	// press ESCAPE key to hide the message
+	$(document).keydown(function(e) {
+    if (e.keyCode == 27) { 
+      hideSlidingMessage();
+    }
+	});
+
 });
 
 function showMessage(message){
 	$("#dialog").html(message).dialog();
+}
+
+function hideSlidingMessage(){
+	$("#notice").stop().slideUp();
 }
 
 function showSlidingMessage(message, className){

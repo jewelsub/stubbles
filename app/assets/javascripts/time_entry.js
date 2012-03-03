@@ -28,7 +28,12 @@ function makeEditable(element) {
 function postValue(element, value) {
 	element.data("value", value);
 	var data = element.data();
-	$.post(url, data, "script");
+	$.ajax({
+	  type: 'POST',
+	  url: url,
+	  data: data,
+	  dataType: "script"
+	});
 	doneEditing(element, value);
 }
 

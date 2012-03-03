@@ -1,26 +1,43 @@
-<table>
-	<tr>
-		<td></td>
-		<% @beginning_of_week.upto(@end_of_week) do |day| %>
-			<td><%= day.strftime("%A") %></td>
-		<% end %>
-	</tr>
-	<% @stories.each do |story| %>
-	<tr>
-		<td colspan="7"><%= story.title %></td>
-	</tr>
-		<% story.tasks.assigned_to(current_user).each do |task| %>
-			<% if(task.assigned_to == current_user) %>
+<div id="banner">
+	<h1 style="float: left;">Time entry for <%= @project.name %></h1>
+	<div style="float: right; margin-top: 8px;">
+		<%= link_to 'Dashboard', project_dashboard_path(@project.id), :class=>"button" %>
+	</div>
+</div>
+<div style="clear: both;"></div>
+<div>
+	<div class="centered" style="margin: 20px 0px 20px 0px;">
+	<table class="shaded">
+		<thead>
 			<tr>
-				<td>#<%= task.title %></td>
+				<th></th>
 				<% @beginning_of_week.upto(@end_of_week) do |day| %>
-					<td>
-						<%= time_entry_slot_for(task, day) %>
-					</td>
+					<th><%= day.strftime("%A") %></th>
 				<% end %>
 			</tr>
+		</thead>
+		<tbody>
+			<% @stories.each do |story| %>
+				<tr>
+					<th><%= story.title %></th>
+					<% 7.times do %><th></th><% end %>
+				</tr>
+				<% story.tasks.assigned_to(current_user).each do |task| %>
+					<% if(task.assigned_to == current_user) %>
+					<tr>
+						<td style="text-align: right;"><%= task.title %></td>
+						<% @beginning_of_week.upto(@end_of_week) do |day| %>
+							<td>
+								<%= time_entry_slot_for(task, day) %>
+							</td>
+						<% end %>
+					</tr>
+					<% end %>
+				<% end %>
 			<% end %>
-		<% end %>
-	<% end %>
-</table>
+		</tbody>
+	</table>
+	</div>
+</div>
+
 <%= javascript_include_tag "time_entry" %>
