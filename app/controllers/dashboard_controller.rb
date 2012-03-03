@@ -16,18 +16,15 @@ class DashboardController < ApplicationController
 
   def time_entry
     @project = Project.find(params[:project_id])
-    @stories = @project.stories.assigned_to(current_user)
+    @stories = @project.stories.assigned_to_task(current_user)
     @beginning_of_week = Date.today.beginning_of_week
     @end_of_week = Date.today.end_of_week
   end
 
   def update_time_entry
-    conditions = {  :spent_on => params[:date], 
-                    :user_id => current_user.id, 
-                    :trackable_type => params[:resource], 
-                    :trackable_id => params[:'resourceId'] }
-
-    time_entry = TimeEntry.find_or_new(conditions)
+    time_entry =  Task.find(params[:'resourceId'])
+                      .time_entries.spent_on(params[:date])
+                      .by(current_user).first_or_create
     time_entry.hours_spent = params[:value]
     time_entry.save
   end

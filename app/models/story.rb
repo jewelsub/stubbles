@@ -10,6 +10,7 @@ class Story < ActiveRecord::Base
   scope :backlog, where(:scope => Scope::BACKLOG)
   scope :prioritized, order('priority')
   scope :assigned_to, lambda { |user| where(:assigned_to_id => user.id) }
+  scope :assigned_to_task, lambda { |user| includes('tasks').where("tasks.assigned_to_id" => user.id) }
 
   before_create :autogenerate_priority
   before_create :assign_default_scope
@@ -47,6 +48,10 @@ class Story < ActiveRecord::Base
 
   def assigned?
     !self.assigned_to.nil?
+  end
+
+  def tasks_assigned_to(user)
+    story.tasks.assigned_to(user)
   end
 
   ######################### Priority ##########################
