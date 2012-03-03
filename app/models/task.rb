@@ -17,7 +17,11 @@ class Task < ActiveRecord::Base
     state :finished
   end
 
-  def total_hours_worked(date)
+  def total_hours_spent
+    time_entries.sum('hours_spent')
+  end
+
+  def total_hours_spent_on(date)
     time_entries.spent_on(date).by(assigned_to).sum('hours_spent')
   end
 

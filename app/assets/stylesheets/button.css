@@ -1,5 +1,6 @@
 .button, .button:visited {
-	padding: 0px 5px 3px 5px;
+	padding: 4px 8px 6px 8px;
+	font-size: 15px; 
 	display: inline;
 	background: #777 url(/images/button.png) repeat-x bottom;
 	border-width:1px;
@@ -15,14 +16,7 @@
 }
 .button:hover							{ background-color: #111; color: #fff; }
 .button:active							{ top: 1px; }
-.small.button, .small.button:visited	{ font-size: 12px}
-.button, .button:visited,
-.medium.button, .medium.button:visited {
-	font-size: 15px; 
-	font-weight: bold; 
-	line-height: 1; 
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
-}
+.button.small, .button.small:visited	{ padding: 0px 5px 3px 5px; font-size: 12px}
 
 .accept.button			{ background-color: #91bd09; }
 .accept.button:hover	{ background-color: #749a02; }

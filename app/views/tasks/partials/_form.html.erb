@@ -3,16 +3,10 @@
 <%= form_for([story, task], :remote=>true) do |f| %>
 	<div class="field task_header">
 		<%= f.text_field :title, :required => true, :size => '40' %>
-	</div>
-	<%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %>
-	<div class="field" style="display: inline-block">
 		<%= f.label :est %>
 		<%= f.text_field :hours_estimated, :size => '1' %>
 	</div>
-	<div class="field" style="display: inline-block">
-		<%= f.label :sp %>
-		<%= f.text_field :hours_spent, :size => '1' %>
-	</div>
+	<%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %>
 	<div class="actions" style="display: inline-block">
 		<%= f.submit(:'data-disable-with' => "Saving...") %>
 		<%= ajax_cancel_link(task, :li) %>

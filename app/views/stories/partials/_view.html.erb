@@ -1,7 +1,7 @@
 <% box_container(container_id_of(story), {:'class' => 'story'}) do %>
 	<% box_header do %>
 		<span><%= story.title %></span>
-		<div class="actions">
+		<div class="actions" style="margin-top: -1px;">
 			<%= action_links_for_story(story) %>
 			<%= link_to 'Edit', edit_project_story_path(story.project, story),
 				:remote=>true, :class => 'edit icon',
@@ -24,7 +24,8 @@
 		<p><%=raw story.description %></p>
 		<div>
 			<div id='<%= container_id_of_tasks_for(story) %>'>
-				<%= render :partial => 'tasks/partials/tasks', :locals => {:story => story, :tasks => story.tasks} %>
+				<%= render :partial => 'tasks/partials/tasks', 
+									 :locals => {:story => story, :tasks => story.tasks} %>
 			</div>
 		</div>
 	<% end %>

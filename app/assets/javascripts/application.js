@@ -4,6 +4,7 @@
 
 $(function() {
 	$("#loading").hide();
+	$(".ui-button").button();
 
 	addSubmitalbeElemntInForm();
 	attachCancelSupport();

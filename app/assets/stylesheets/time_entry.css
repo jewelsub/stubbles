@@ -21,7 +21,12 @@ table.shaded{
     -webkit-box-shadow:0px -1px 4px #000;
     box-shadow:0px -1px 4px #000;
     text-shadow:1px 1px 1px #000;
+    text-align: center;
 }
+.shaded thead th span {
+    font-size: 12px;
+}
+
 .shaded tfoot th{
     padding:10px;
     font-size:18px;

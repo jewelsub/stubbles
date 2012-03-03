@@ -1,7 +1,7 @@
 <li id='<%= container_id_of(task) %>'>
 	<div class="task_header">
 		<span><%= task.title %></span>
-		<div style="display: inline-block; float: right;">
+		<div style="display: inline-block; float: right; margin-top: -3px;">
 			<%= action_links_for_task(task) %>
 			<%= link_to 'Edit', edit_story_task_path(task.story, task), 
 				:remote=>true, :class => 'edit icon',
