@@ -1,6 +1,5 @@
 $(function() {
-	$("#dialog").hide();
-	$("#notice").hide().on('click', function() {
+	$("#notice").on('click', function() {
 		hideSlidingMessage();
 	});
 

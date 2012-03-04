@@ -3,7 +3,6 @@
 //= require ajax_loader
 
 $(function() {
-	$("#loading").hide();
 	$(".ui-button").button();
 
 	addSubmitalbeElemntInForm();

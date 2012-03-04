@@ -1,12 +1,11 @@
 <% if user_signed_in? %>
 <nav class="clear">
   <ul>
-    <% if @project %>
-      <li><%= link_to 'Dashboard', project_dashboard_path(@project.id) %></li>
-      <li><%= link_to 'Time entry', project_time_entry_path(@project.id) %></li>
-    <% else %>
       <li><%= link_to 'Projects', projects_path %></li>
-    <% end %>
+      <% if @project && !@project.new_record? %>
+        <li><%= link_to 'Dashboard', project_dashboard_path(@project.id) %></li>
+        <li><%= link_to 'Time entry', project_time_entry_path(@project.id) %></li>
+      <% end %>
   </ul>
 </nav>
 <% end %>
