@@ -73,25 +73,23 @@ h1,h2,h3{
 
 h1{
     /* The logo text */
-    font-size:3.5em;
+    font-size:2.5em;
     padding:0.5em 0 0;
-    text-transform:uppercase;
 }
 
 h3{
     /* The slogan text */
     font-family:forte,"Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
-    font-size:2em;
+    font-size:1.5em;
     font-weight:normal;
     margin:0 0 1em;
 }
 
 
 h2{
-    font-size:2.2em;
+    font-size:1.8em;
     font-weight:normal;
     letter-spacing:0.01em;
-    text-transform:uppercase;
 }
 
 p{
@@ -120,14 +118,12 @@ footer .line{
 }
 
 nav{
-    background:url(img/gradient_light.jpg) repeat-x 50% 50% #f8f8f8;
+    background: #f8f8f8;
     padding:0 5px;
     position:absolute;
     right:0;
     top:4em;
-    
     border:1px solid #FCFCFC;
-
     -moz-box-shadow:0 1px 1px #333333;
     -webkit-box-shadow:0 1px 1px #333333;
     box-shadow:0 1px 1px #333333;

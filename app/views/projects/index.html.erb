@@ -7,19 +7,18 @@
     <th>Name</th>
     <th>Description</th>
     <th>Started on</th>
-    <th colspan="5"></th>
+    <th colspan="4"></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project_dashboard_path(project.id) %></td>
     <td><%= project.description %></td>
     <td><%= l project.started_on, :format => :long %></td>
-    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Dashboard', project_dashboard_path(project.id) %></td>
+    <td><%= link_to 'Members', project_project_memberships_path(project) %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  	<td><%= link_to 'Dashboard', project_dashboard_path(project.id) %></td>
-  	<td><%= link_to 'Members', project_project_memberships_path(project) %></td>
   </tr>
 <% end %>
 </table>

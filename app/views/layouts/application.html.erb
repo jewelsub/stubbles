@@ -25,7 +25,7 @@
   <section id="page"> <!-- Defining the #page section with the section tag -->
     <header> <!-- Defining the header section of the page-->
         <hgroup>
-            <h1>Stubbles</h1>
+            <h1><%= @project ? @project.name : 'Stubbles' %></h1>
             <h3>Plan your project</h3>
         </hgroup>
         <%= render :partial => 'layouts/menu' %>
