@@ -1,5 +1,5 @@
 var backlogStories = $('.story_column[data-scope="<%= Scope::BACKLOG %>"]');
-var newStory = backlogStories.find('.new_story');
+var newStory = backlogStories.find('#new.story');
 newStory.remove();
 backlogStories.prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
 newStory.hide();
