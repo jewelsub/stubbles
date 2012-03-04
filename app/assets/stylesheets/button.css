@@ -2,27 +2,35 @@
 	padding: 4px 8px 6px 8px;
 	font-size: 15px; 
 	display: inline;
-	background: #777 url(/images/button.png) repeat-x bottom;
 	border-width:1px;
 	color: #fff;
 	cursor: pointer;
 	font-weight: bold;
+	background-color: #336996;
+	border: 1px solid #1D415F;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	text-shadow: 1px 1px #666;
 	cursor: pointer;
-	text-decoration:none;
 }
-.button:hover							{ background-color: #111; color: #fff; }
+.button:hover {
+	background-color: #2575cf;
+}
 .button:active							{ top: 1px; }
-.button.small, .button.small:visited	{ padding: 0px 5px 3px 5px; font-size: 12px}
+.button.small, .button.small:visited	{
+	padding: 0px 5px 3px 5px;
+	font-size: 12px;
+	margin: 0px 2px 0px 2px;
+}
 
-.accept.button			{ background-color: #91bd09; }
-.accept.button:hover	{ background-color: #749a02; }
-.reject.button			{ background-color: #e84444; }
-.reject.button:hover	{ background-color: #cf2525; }
-.finish.button			{ background-color: #336996; }
-.finish.button:hover	{ background-color: #2575cf; }
-.start.button			{ background-color: #e8a344; }
-.start.button:hover		{ background-color: #fc9200; }
+.accept.button			{ background-color: #91bd09; border: 1px solid #384216;}
+.accept.button:hover	{ background-color: #749a02; border: 1px solid #384216;}
+.reject.button			{ background-color: #DC3737; border: 1px solid #6C1C1C;}
+.reject.button:hover	{ background-color: #cf2525; border: 1px solid #6C1C1C;}
+.finish.button			{ background-color: #336996; border: 1px solid #1D415F;}
+.finish.button:hover	{ background-color: #2575cf; border: 1px solid #1D415F;}
+.start.button			{ background-color: #e8a344; border: 1px solid #5F431D;}
+.start.button:hover		{ background-color: #fc9200; border: 1px solid #5F431D;}
+.reopen.button			{ background-color: #91bd09; border: 1px solid #384216;}
+.reopen.button:hover	{ background-color: #749a02; border: 1px solid #384216;}

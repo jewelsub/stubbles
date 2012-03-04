@@ -1,20 +1,43 @@
-.story .portlet-header { margin: 2px; }
-.story .portlet-header .actions {
-	padding: 5px;
-	display: inline-block;
+.story{
+	width: 445px;
+	background-color:#355664;
+	margin: 5px 0px;
+	padding:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border: 1px solid #1F343C;
+}
+
+.story .header .actions{
 	float: right;
+}
+
+.story .header {
+	cursor: move;
+}
+
+.hours {
+	display: inline-block; color: #606060;
 }
 
 ol.tasks {margin:0px; padding:0px;}
 ol.tasks li {
 	list-style: none;
-	background-color: #EFEFEF;
-	border-bottom: 1px solid #999;
-	border-top: 1px solid #DDD;
+	background-color: #4C7383;
+	border-bottom: 1px solid #24404c;
+	border-left: 1px solid #24404c;
+	border-right: 1px solid #24404c;
 }
+
+ol.tasks li:first-child {
+	border-top: 1px solid #24404c;
+}
+
 .icon.edit, .icon.delete {float: left;}
 .task_header {
-	background-color: #DDDDEE;
+	background-color: #5F8B9C;
+	border-bottom: 1px solid #416371;
 }
 
 .task_header, .task_container {

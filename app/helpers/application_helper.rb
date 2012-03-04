@@ -8,7 +8,7 @@ module ApplicationHelper
     options.delete(:class)
     options_as_array = options.collect{ |key, value| "#{key} = \"#{value}\""}
   	concat <<-EOF.html_safe
-    	<div id='#{containerId}' #{options_as_array.join(' ')} class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all #{custom_class}">
+    	<div id='#{containerId}' #{options_as_array.join(' ')} class="#{custom_class}">
   	EOF
   	yield
   	concat <<-EOF.html_safe
@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def box_header()
   	concat <<-EOF.html_safe
-    	<div class="portlet-header ui-widget-header ui-corner-all">
+    	<div class="header">
   	EOF
     yield
   	concat <<-EOF.html_safe
@@ -28,7 +28,7 @@ module ApplicationHelper
 
   def box_content()
   	concat <<-EOF.html_safe
-    	<div class="portlet-content" style="display: block; ">
+    	<div class="content" style="display: block; "><div class="line"></div>
   	EOF
     yield
   	concat <<-EOF.html_safe
