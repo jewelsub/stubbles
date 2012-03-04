@@ -17,7 +17,7 @@ class DashboardController < ApplicationController
   def time_entry
     @week = Week.new params[:week]
     @project = Project.find(params[:project_id])
-    @stories = @project.stories.assigned_to_task(current_user)
+    @stories = @project.stories.current.assigned_to_task(current_user)
   end
 
   def update_time_entry
