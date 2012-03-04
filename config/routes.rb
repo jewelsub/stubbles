@@ -1,5 +1,5 @@
 Stubbles::Application.routes.draw do
-  root :to => 'welcome#index'
+  root :to => 'projects#index'
 
   devise_for :users
 

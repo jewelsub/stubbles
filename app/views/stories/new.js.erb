@@ -1,5 +1,7 @@
-$('#backlog_stories .new_story').remove();
-$('#backlog_stories').prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
-$('#backlog_stories .new_story').hide();
-$('#backlog_stories .new_story').slideDown("fast");
-$('#backlog_stories .new_story #story_title').focus();
+var backlogStories = $('.story_column[data-scope="<%= Scope::BACKLOG %>"]');
+var newStory = backlogStories.find('.new_story');
+newStory.remove();
+backlogStories.prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
+newStory.hide();
+newStory.slideDown("fast");
+$(newStory, '#story_title').focus();

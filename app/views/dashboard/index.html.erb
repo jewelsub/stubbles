@@ -1,29 +1,22 @@
-<div id="banner">
-	<h1 style="float: left;"><%= @project.name %></h1>
-	<div style="float: right; margin-top: 8px;">
+<% content_for :title do %>
+  <h2 style="float: left;">Dashboard</h2>
+	<div style="float: right;">
 		<a id="toggleCollapse" class="button" href="#">Toggle collapse</a>
 		<%= link_to 'New story', new_project_story_path(@project), 
 			:remote=>true, :class => 'button', :'data-disable-with' => "Loading..." %>
-		<%= link_to 'Time entry', project_time_entry_path(@project.id), :class=>"button" %>
 	</div>
-</div>
+	<div class="clear"></div>
+<% end %>
+
 <div style="clear: both;"></div>
-<div id="main">
-	<h2>Current stories</h2>
-	<div id='current_stories' class="story_column" data-scope="<%= Scope::CURRENT %>">
-		<% @current_stories.each do |story| %>
-			<%= render :partial => 'stories/partials/view', 
-						:locals => {:story => story} %>
-		<% end %>
-	</div>
-</div>
-<div id="sidebar">
-	<h2>Backlog</h2>
-	<div id='backlog_stories' class="story_column" data-scope="<%= Scope::BACKLOG %>">
-		<% @backlog_stories.each do |story| %>
-			<%= render :partial => 'stories/partials/view', :locals => {:story => story} %>
-		<% end %>
-	</div>
-</div>
+
+<%= render :partial => 'dashboard/story_column', :locals => {:title => 'Current',
+																									:scope => Scope::CURRENT,
+																									:stories => @current_stories} %>
+
+<%= render :partial => 'dashboard/story_column', :locals => {:title => 'Backlog',
+																									:scope => Scope::BACKLOG,
+																									:stories => @backlog_stories} %>
+<div style="clear: both;"></div>
 <br />
 <%= javascript_include_tag "dashboard" %>

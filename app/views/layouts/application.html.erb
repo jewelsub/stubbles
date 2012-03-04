@@ -10,22 +10,44 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!-- Internet Explorer HTML5 enabling code: -->
+  <!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <style type="text/css">
+    .clear {
+      zoom: 1;
+      display: block;
+    }
+  </style>
+  <![endif]-->
 </head>
 <body>
-<div id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-  <% end %>
-</div>
-<p id="notice"><%= notice %></p>
-<%= yield %>
+  <section id="page"> <!-- Defining the #page section with the section tag -->
+    <header> <!-- Defining the header section of the page-->
+        <hgroup>
+            <h1>Stubbles</h1>
+            <h3>Plan your project</h3>
+        </hgroup>
+        <%= render :partial => 'layouts/menu' %>
+    </header>
+    
+    <section>
+        <div class="line"></div>
+        <block>
+            <h2><%= yield :title %></h2>
+            <div class="line"></div>
+            <div class="articleBody clear">
+              <%= yield %>
+            </div>
+        </block>
+    </section>
 
-<div id="dialog" title="Dialog"></div>
-<div id="loading" title="Please wait">
-  <%= image_tag('/images/ajax-loader.gif') %>
-</div>
+    <p id="notice"><%= notice %></p>
+    <div id="dialog" title="Dialog"></div>
+    <div id="loading" title="Please wait">
+      <%= image_tag('/images/ajax-loader.gif') %>
+    </div>
+    <%= render :partial => 'layouts/footer' %>
+  </section> <!-- Closing the #page section -->
 </body>
 </html>

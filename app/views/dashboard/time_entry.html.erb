@@ -1,13 +1,10 @@
-<div id="banner">
-	<h1 style="float: left;">Time entry for <%= @project.name %></h1>
-	<div style="float: right; margin-top: 8px;">
-		<%= link_to 'Dashboard', project_dashboard_path(@project.id), :class=>"button" %>
-	</div>
-</div>
-<div style="clear: both;"></div>
+<% content_for :title do %>
+  <h2>Time entry for <%= @project.name %></h2>
+<% end %>
+
 <div>
 	<div class="centered" style="margin: 20px 0px 20px 0px;">
-		<div style = "display: inline-block; width: 780px;">
+		<div style = "display: inline-block; width: 780px; margin-bottom: 10px;">
 			<%= link_to 'Previous', 
 						project_time_entry_path(@project.id, :week => @week.previous), 
 						:class=>"button", :style => "float: left;" %>

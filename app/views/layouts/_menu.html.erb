@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<nav class="clear">
+  <ul>
+    <% if @project %>
+      <li><%= link_to 'Dashboard', project_dashboard_path(@project.id) %></li>
+      <li><%= link_to 'Time entry', project_time_entry_path(@project.id) %></li>
+    <% else %>
+      <li><%= link_to 'Projects', projects_path %></li>
+    <% end %>
+  </ul>
+</nav>
+<% end %>
+<div style="float :right;">
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+</div>
+<div class="clear"></div>
