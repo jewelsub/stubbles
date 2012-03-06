@@ -1,28 +1,28 @@
 <% content_for :title do %>
-  Listing projects
+  <h1 style="float: left;">Listing projects</h1>
+  <%= link_to 'New Project', new_project_path, :class=>'button', 
+            :style => 'float: right; margin-bottom: 10px;' %>
+  <div class="clear"></div>
 <% end %>
 
-<table class="default">
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Started on</th>
-    <th colspan="4"></th>
-  </tr>
+<div class="centered" style="margin: 20px 0px 20px 0px;">
+  <table class="default">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Started on</th>
+      <th colspan="3"></th>
+    </tr>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.name, project_dashboard_path(project.id) %></td>
-    <td><%= project.description %></td>
-    <td><%= l project.started_on, :format => :long %></td>
-    <td><%= link_to 'Dashboard', project_dashboard_path(project.id) %></td>
-    <td><%= link_to 'Members', project_project_memberships_path(project) %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project.name, project_dashboard_path(project.id) %></td>
+      <td><%= project.description %></td>
+      <td><%= l project.started_on, :format => :long %></td>
+      <td><%= link_to 'Members', project_project_memberships_path(project) %></td>
+      <td><%= link_to 'Edit', edit_project_path(project) %></td>
+      <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

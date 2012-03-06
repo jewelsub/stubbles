@@ -43,7 +43,7 @@ ol.tasks li:first-child {
 .task_header, .task_container {
 	padding: 5px;
 }
-.task_header .icon { margin: 2px 0px 0px 5px; }
+.task_header .icon { margin: 3px 0px 0px 5px; }
 
 .estimated {
 	background-color: #BBBBFF;

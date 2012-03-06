@@ -9,8 +9,9 @@ class CreateStories < ActiveRecord::Migration
       t.references :assigned_to
       t.float :hours_estimated
       t.float :hours_spent
-      t.date :deadline
       t.integer :priority
+      t.date :scheduled_on
+      t.date :deadline
 
       t.timestamps
     end

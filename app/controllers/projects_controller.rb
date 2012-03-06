@@ -69,4 +69,19 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def time_entry
+    @week = Week.new params[:week]
+    @project = Project.find(params[:id])
+    @stories = @project.stories.current.assigned_to_task(current_user)
+  end
+
+  def update_time_entry
+    @time_entry =  Task.find(params[:'resourceId'])
+                      .time_entries.spent_on(params[:date])
+                      .by(current_user).first_or_create
+    @time_entry.hours_spent = params[:value]
+    @time_entry.save
+  end
+
 end

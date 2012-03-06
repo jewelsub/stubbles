@@ -4,6 +4,7 @@ stubbles_story1:
   description: Stubbles_story 1 description 
   project: stubbles
   assigned_to: jitu
+  deadline: <%= 7.days.from_now.to_s(:db) %>
 
 stubbles_story2:
   title: Stubbles_story2
@@ -11,3 +12,4 @@ stubbles_story2:
   description: Stubbles_story 2 description 
   project: stubbles
   assigned_to: jitu
+  deadline: <%= 7.days.from_now.to_s(:db) %>

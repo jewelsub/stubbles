@@ -4,5 +4,6 @@
 	<% end %>
 </ol>
 <br />
-<%= link_to 'New Task', new_story_task_path(story), 
-	:remote => true, :'data-disable-with' => "Loading..." %>
+<%= link_to 'New Task', new_story_task_path(story), :class => 'button', 
+	:remote => true, :'data-disable-with' => "Loading...",
+	:style => 'margin: 10px 0px 10px 0px;' %>

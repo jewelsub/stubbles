@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
     t.text     "description"
     t.date     "started_on"
     t.integer  "creator_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "stories", :force => true do |t|
@@ -41,10 +41,11 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
     t.integer  "assigned_to_id"
     t.float    "hours_estimated"
     t.float    "hours_spent"
-    t.date     "deadline"
     t.integer  "priority"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date     "scheduled_on"
+    t.date     "deadline"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"
@@ -57,9 +58,8 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
     t.integer  "assigned_to_id"
     t.float    "hours_estimated"
     t.float    "hours_spent"
-    t.date     "deadline"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "tasks", ["story_id"], :name => "index_tasks_on_story_id"
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -90,7 +90,6 @@ class Story < ActiveRecord::Base
     lowest_priority_of_backlog = Story.lowest_priority_by_scope(project, Scope::BACKLOG)
     highest_priority_of_current = Story.highest_priority_by_scope(project, Scope::CURRENT)
     min_priority_in_scope = lowest_priority_of_backlog || (highest_priority_of_current || 0  + 1)
-    puts "Priority to assign :: #{min_priority_in_scope}"
     Story.shift_priority_from(project, min_priority_in_scope)
     self.priority = min_priority_in_scope
   end

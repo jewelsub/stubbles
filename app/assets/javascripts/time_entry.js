@@ -1,5 +1,3 @@
-var url = "/projects/1/update_time_entry";
-
 $(function() {
 	$(document).on('click', ".editable:not(.editing)", 
 		function() {
@@ -28,6 +26,9 @@ function makeEditable(element) {
 function postValue(element, value) {
 	element.data("value", value);
 	var data = element.data();
+	var projectId = element.data("project-id");
+	var url = "/projects/" + projectId + "/update_time_entry";
+
 	$.ajax({
 	  type: 'POST',
 	  url: url,

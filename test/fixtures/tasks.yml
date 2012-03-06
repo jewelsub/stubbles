@@ -5,7 +5,6 @@ stubbles_story1_task1:
   assigned_to: jitu
   hours_estimated: 10
   hours_spent: 0
-  deadline: <%= 7.days.from_now.to_s(:db) %>
 
 stubbles_story1_task2:
   title: Stubbles_story1_task2
@@ -14,4 +13,3 @@ stubbles_story1_task2:
   assigned_to: setu
   hours_estimated: 6
   hours_spent: 2
-  deadline: <%= 7.days.from_now.to_s(:db) %>

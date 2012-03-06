@@ -11,7 +11,7 @@
 			<p><%= f.text_area :description, :size => "50x5",
 					:class => 'richtext' %></p><br/>
 			<div>
-				<%= f.submit(:'data-disable-with' => "Saving...") %>
+				<%= f.submit(:'data-disable-with' => "Saving...", :class => 'button') %>
 				<%= ajax_cancel_link(story, '.story') %>
 			</div>
 		<% end %>

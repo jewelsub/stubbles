@@ -7,7 +7,6 @@ class CreateTasks < ActiveRecord::Migration
       t.references :assigned_to
       t.float :hours_estimated
       t.float :hours_spent
-      t.date :deadline
 
       t.timestamps
     end

@@ -19,6 +19,10 @@ Stubbles::Application.routes.draw do
         put 'deactivate'
       end
     end
+    member do
+      post 'update_time_entry'
+      get 'time_entry'
+    end
   end
 
   resources :stories do
@@ -33,8 +37,4 @@ Stubbles::Application.routes.draw do
   get  'user/search' => 'users#search_new', :as => 'new_user_search'
   post 'user/search' => 'users#search', :as => 'user_search'
   match 'projects/:project_id/dashboard' => 'dashboard#index', :as => 'project_dashboard'
-  match 'projects/:project_id/time_entry' => 'dashboard#time_entry', :as => 'project_time_entry'
-  match 'projects/:project_id/update_time_entry' => 'dashboard#update_time_entry', 
-          :as => 'update_time_entry'
-
 end

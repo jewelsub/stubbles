@@ -6,10 +6,10 @@
 	<div class="centered" style="margin: 20px 0px 20px 0px;">
 		<div style = "display: inline-block; width: 780px; margin-bottom: 10px;">
 			<%= link_to 'Previous', 
-						project_time_entry_path(@project.id, :week => @week.previous), 
+						time_entry_project_path(@project.id, :week => @week.previous), 
 						:class=>"button", :style => "float: left;" %>
 			<%= link_to 'Next', 
-						project_time_entry_path(@project.id, :week => @week.next), 
+						time_entry_project_path(@project.id, :week => @week.next), 
 						:class=>"button", :style => "float: right;" %>
 		</div>
 	<table class="shaded" style="width: 780px;">
