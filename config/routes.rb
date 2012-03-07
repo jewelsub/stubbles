@@ -37,4 +37,10 @@ Stubbles::Application.routes.draw do
   get  'user/search' => 'users#search_new', :as => 'new_user_search'
   post 'user/search' => 'users#search', :as => 'user_search'
   match 'projects/:project_id/dashboard' => 'dashboard#index', :as => 'project_dashboard'
+
+  match 'projects/:project_id/calendar' => 'story_calendar#index', :as => 'story_calendar'
+  put 'projects/:project_id/stories/:id/scheduled_start_at' => 
+      'story_calendar#update_scheduled_start_at', :as => 'scheduled_start_at'
+  put 'projects/:project_id/stories/:id/scheduled_complete_at' => 
+      'story_calendar#update_scheduled_complete_at', :as => 'scheduled_complete_at'
 end

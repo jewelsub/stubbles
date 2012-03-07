@@ -4,6 +4,7 @@ class StoriesController < ApplicationController
   
   def index
     @stories = @project.stories
+    respond_with(@stories)
   end
 
   def show
@@ -54,7 +55,7 @@ class StoriesController < ApplicationController
     flash[:notice] = "Story deleted"
   end
   
- private
+  private
 
   def load_project
     @project = Project.find(params[:project_id])

@@ -39,11 +39,11 @@ class Story < ActiveRecord::Base
   end
 
   def total_hours_estimated
-    hours_estimated || tasks.sum(:hours_estimated)
+    tasks.sum(:hours_estimated)
   end
 
   def total_hours_spent
-    hours_spent || tasks.sum(:hours_spent)
+    tasks.sum(:hours_spent)
   end
 
   def assigned?
@@ -52,6 +52,13 @@ class Story < ActiveRecord::Base
 
   def tasks_assigned_to(user)
     story.tasks.assigned_to(user)
+  end
+
+  def as_json(options={})
+    {:id => self.id,
+    :title => self.title,
+    :start => self.scheduled_start_at || Date.today,
+    :end => self.scheduled_complete_at || Date.today}
   end
 
   ######################### Priority ##########################

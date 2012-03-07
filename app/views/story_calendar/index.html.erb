@@ -1,0 +1,42 @@
+<h1>Calendar</h1>
+<div id='calendar'></div>
+
+<%= javascript_include_tag "fullcalendar" %>
+<script type='text/javascript'>
+	var projectId = <%= @project.id %>
+	$(document).ready(function() {
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month'
+			},
+			theme: true,
+			editable: true,
+			events: "/projects/" + projectId + "/stories.json",
+			eventDrop: function(event,dayDelta,minuteDelta,revertFunc) {
+				var path = "/projects/" + projectId + "/stories/" + event.id + "/scheduled_start_at";
+				$.ajax({
+					type: 'PUT',
+				  dataType: "script",
+				  url: path,
+				  data: { dayDelta: dayDelta, minuteDelta: minuteDelta }
+				});
+			},
+			eventResize: function(event,dayDelta,minuteDelta,revertFunc) {
+      	var path = "/projects/" + projectId + "/stories/" 
+      							+ event.id + "/scheduled_complete_at";
+				$.ajax({
+					type: 'PUT',
+				  dataType: "script",
+				  url: path,
+				  data: { dayDelta: dayDelta, minuteDelta: minuteDelta }
+				});
+    	},
+			loading: function(bool) {
+				if (bool) startLoading();
+				else stopLoading();
+			}
+		});
+	});
+</script>
