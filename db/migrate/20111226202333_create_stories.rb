@@ -8,8 +8,8 @@ class CreateStories < ActiveRecord::Migration
       t.references :project
       t.references :assigned_to
       t.integer :priority
-      t.date :scheduled_start_at
-      t.date :scheduled_complete_at
+      t.date :start_at
+      t.date :complete_at
       t.date :deadline
 
       t.timestamps

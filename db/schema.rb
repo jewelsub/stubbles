@@ -35,16 +35,16 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.string   "status"
-    t.string   "scope",                 :default => "backlog"
+    t.string   "scope",          :default => "backlog"
     t.text     "description"
     t.integer  "project_id"
     t.integer  "assigned_to_id"
     t.integer  "priority"
-    t.date     "scheduled_start_at"
-    t.date     "scheduled_complete_at"
+    t.date     "start_at"
+    t.date     "complete_at"
     t.date     "deadline"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "stories", ["assigned_to_id"], :name => "index_stories_on_assigned_to_id"

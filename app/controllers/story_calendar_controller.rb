@@ -4,23 +4,36 @@ class StoryCalendarController < ApplicationController
   def index
   end
 
-  def update_scheduled_start_at
+  def story_feed
+    @stories = @project.stories
+    user_id = params[:user_id].to_i
+    @stories = @stories.assigned_to_task_for(User.find(user_id)) if user_id > 0
+    render :json => @stories.map { |story| 
+      { :id => story.id,
+        :title => story.title,
+        :start => story.start_at || Date.today,
+        :end => story.complete_at || 
+                (Date.today + (story.total_hours_estimated / Project::HOURS_PER_DAY) ) }
+    }
+  end
+
+  def update_start_at
     @story = @project.stories.find(params[:id])
-    scheduled_start_at = time_after_delta(@story.scheduled_start_at)
-    scheduled_complete_at = time_after_delta(@story.scheduled_complete_at)
-    if @story.update_attributes({:scheduled_start_at => scheduled_start_at, 
-                                  :scheduled_complete_at => scheduled_complete_at})
-      flash[:notice] = "Story scheduled on #{scheduled_start_at}"
+    start_at = time_after_delta(@story.start_at)
+    complete_at = time_after_delta(@story.complete_at)
+    if @story.update_attributes({:start_at => start_at, 
+                                  :complete_at => complete_at})
+      flash[:notice] = "Story scheduled on #{start_at}"
     else
       flash[:error] = @story.errors
     end
   end
 
-  def update_scheduled_complete_at
+  def update_complete_at
     @story = @project.stories.find(params[:id])
-    scheduled_complete_at = time_after_delta(@story.scheduled_complete_at)
-    if @story.update_attributes(:scheduled_complete_at => scheduled_complete_at)
-      flash[:notice] = "Story estimated complete on #{scheduled_complete_at}"
+    complete_at = time_after_delta(@story.complete_at)
+    if @story.update_attributes(:complete_at => complete_at)
+      flash[:notice] = "Story estimated complete on #{complete_at}"
     else
       flash[:error] = @story.errors
     end

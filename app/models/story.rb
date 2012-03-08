@@ -10,7 +10,7 @@ class Story < ActiveRecord::Base
   scope :backlog, where(:scope => Scope::BACKLOG)
   scope :prioritized, order('priority')
   scope :assigned_to, lambda { |user| where(:assigned_to_id => user.id) }
-  scope :assigned_to_task, lambda { |user| includes('tasks').where("tasks.assigned_to_id" => user.id) }
+  scope :assigned_to_task_for, lambda { |user| includes('tasks').where("tasks.assigned_to_id" => user.id) }
 
   before_create :autogenerate_priority
   before_create :assign_default_scope
@@ -52,13 +52,6 @@ class Story < ActiveRecord::Base
 
   def tasks_assigned_to(user)
     story.tasks.assigned_to(user)
-  end
-
-  def as_json(options={})
-    {:id => self.id,
-    :title => self.title,
-    :start => self.scheduled_start_at || Date.today,
-    :end => self.scheduled_complete_at || Date.today}
   end
 
   ######################### Priority ##########################
@@ -105,9 +98,4 @@ class Story < ActiveRecord::Base
     self.scope = Scope::BACKLOG
   end
 
-  def self.inspect_table
-    Story.all. each { |story|
-      puts "#{story.id} :: #{story.priority} :: #{story.scope}"
-    }
-  end
 end

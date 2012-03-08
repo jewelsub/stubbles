@@ -13,7 +13,6 @@ stubbles = Project.create(:name => 'Stubbles', :creator => jitu, :description =>
 Project.create(:name => 'Newton freshair', :creator => setu, :description => 'Sample description', :started_on => 1.week.ago)
 
 stubbles.memberships.create(:user => arif, :role => Role::ADMIN)
-stubbles.memberships.create(:user => jitu, :role => Role::ADMIN)
 stubbles.memberships.create(:user => setu, :role => Role::MEMBER)
 
 stubbles.stories.create(:title => 'Story 1', :assigned_to => jitu)

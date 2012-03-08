@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @projects = current_user.projects.all
+    @projects = current_user.projects
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
   def time_entry
     @week = Week.new params[:week]
     @project = Project.find(params[:id])
-    @stories = @project.stories.current.assigned_to_task(current_user)
+    @stories = @project.stories.current.assigned_to_task_for(current_user)
   end
 
   def update_time_entry
