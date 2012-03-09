@@ -1,3 +1,5 @@
+//= require lib/jquery.cleditor.js
+
 var SORTABLE_COLUMN_SELECTOR = ".story_column";
 var PROJECT_ID = window.location.pathname.split('/')[2]; //expecting the pathname as /projects/1/dashboard
 
@@ -35,7 +37,7 @@ function updateChanges(changes){
 		changes
 	).complete(function() { stopLoading(); });
 }
-	
+
 function addCollapseToggleForPortlet() {
 	$(".story_column").on('click', ".collapse, .expand", 
 		function() {
@@ -52,4 +54,8 @@ function hideAllPortlet() {
 
 function toggleCollapse() {
 	$(".header .collapse, .header .expand").click();
+}
+
+function addRichText() {
+  $(".richtext").cleditor({width:440, height:180, useCSS:true})[0].focus();
 }

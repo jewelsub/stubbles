@@ -1,4 +1,4 @@
-//= require fullcalendar
+//= require lib/fullcalendar
 //= require message
 
 function loadCalendar(projectId, user_id) {
