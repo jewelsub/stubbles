@@ -17,6 +17,18 @@
 	cursor: move;
 }
 
+.story .story.status {
+	float: left;
+}
+
+.story .content .assigned_to {
+	padding:1px 3px 1px 3px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	border: 1px solid #1F343C;
+}
+
 .hours {
 	display: inline-block; color: #606060;
 }
@@ -62,3 +74,30 @@ ol.tasks li:first-child {
 	border-left: none;
 	float: right;
 }
+
+/* Color over ride */
+.story.finished {
+	background-color:#355645;
+	border: 1px solid #1F3400;
+}
+
+.story.finished .line{
+    background-color:#244011;
+    border-bottom:1px solid #416350;
+}
+
+.tasks .finished {
+	background-color:#355650;
+	border: 1px solid #1F3400;
+}
+
+.tasks .finished .task_header {
+	background-color:#355640;
+	border-top: 1px solid #1F3400;
+	border-bottom: 1px solid #1F3400;
+}
+
+.story.rejected {
+	border: 1px solid #D03400;
+}
+

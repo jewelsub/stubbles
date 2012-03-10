@@ -1,4 +1,4 @@
-<li id='<%= container_id_of(task) %>'>
+<li id='<%= container_id_of(task) %>' class="task <%= task.status %>">
 	<div class="task_header">
 		<span><%= task.title %></span>
 		<div style="display: inline-block; float: right; margin-top: -3px;">
@@ -13,7 +13,6 @@
 		</div>
 	</div>
 	<div class="task_container">
-		<span><%= task.status %></span>
 		<span><%= assigned_person_for(task) %></span>
 		<div style="float: right;">
 			<%= render :partial => 'shared/estimated_and_spent_hours', 

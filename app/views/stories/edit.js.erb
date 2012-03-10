@@ -1,2 +1,3 @@
 $('#<%= container_id_of(@story) %>').replaceWith('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
+addRichText('#<%= container_id_of(@story) %>');
 $('#<%= container_id_of(@story) %> #story_title').focus();

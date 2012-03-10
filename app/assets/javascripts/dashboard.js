@@ -56,6 +56,6 @@ function toggleCollapse() {
 	$(".header .collapse, .header .expand").click();
 }
 
-function addRichText() {
-  $(".richtext").cleditor({width:440, height:180, useCSS:true})[0].focus();
+function addRichText(rootElement) {
+  $(rootElement).find(".richtext").cleditor({width:440, height:180, useCSS:true})[0];
 }

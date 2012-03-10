@@ -1,4 +1,4 @@
-<% box_container(container_id_of(story), {:'class' => 'story'}) do %>
+<% box_container(container_id_of(story), {:'class' => "story #{story.status}"}) do %>
 	<% box_header do %>
 		<span><%= story.title %></span>
 		<div class="actions clear" style="float: right;">
@@ -14,8 +14,7 @@
 		</div>
 	<% end %>
 	<% box_content do %>
-		<span><%= story.status.humanize %></span><br/>
-		<span><%= assigned_person_for(story) %></span>
+		<span class="assigned_to"><%= assigned_person_for(story) %></span>		
 		<div style="float: right;">
 			<%= render :partial => 'shared/estimated_and_spent_hours', 
 				:locals => {:estimated => story.total_hours_estimated, 

@@ -3,5 +3,6 @@ var newStory = backlogStories.find('#new.story');
 newStory.remove();
 backlogStories.prepend('<%= escape_javascript(render :partial => 'stories/partials/form', :locals => {:story => @story, :project => @project}) %>');
 newStory.hide();
+addRichText('#new.story');
 newStory.slideDown("fast");
 $(newStory, '#story_title').focus();
