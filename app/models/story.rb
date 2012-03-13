@@ -8,6 +8,7 @@ class Story < ActiveRecord::Base
   has_many :tasks
   scope :current, where(:scope => Scope::CURRENT)
   scope :backlog, where(:scope => Scope::BACKLOG)
+  scope :yet_to_be_accepted, where('stories.status != "accepted"')
   scope :prioritized, order('priority')
   scope :assigned_to, lambda { |user| where(:assigned_to_id => user.id) }
   scope :assigned_to_task_for, lambda { |user| includes('tasks').where("tasks.assigned_to_id" => user.id) }

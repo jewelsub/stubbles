@@ -1,7 +1,7 @@
 <% content_for :title do %>
   <h2 style="float: left;">Calendar</h2>
 	<div style="float: right;">
-		<%= select_tag('user_id',options_for_select(@project.users.collect {|user| 
+		<%= select_tag('user_id',options_for_select(@users.collect {|user| 
 								[ user.email, user.id ] }, 
 								:selected => params[:user_id]),
 								:prompt => '') %>

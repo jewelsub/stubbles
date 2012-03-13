@@ -2,6 +2,7 @@ class StoryCalendarController < ApplicationController
   before_filter :load_project, :authenticate_user!
 	
   def index
+    @users = @project.collaborators
   end
 
   def story_feed

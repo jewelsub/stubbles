@@ -73,7 +73,10 @@ class ProjectsController < ApplicationController
   def time_entry
     @week = Week.new params[:week]
     @project = Project.find(params[:id])
-    @stories = @project.stories.current.assigned_to_task_for(current_user)
+    @user = params[:user_id] ? User.find(params[:user_id]) : current_user
+    @stories = @project.stories.current.yet_to_be_accepted
+                        .assigned_to_task_for(@user)
+    @users = @project.collaborators
   end
 
   def update_time_entry

@@ -1,3 +1,12 @@
+.ui-sortable-placeholder { 
+	border: 1px dotted black;
+	visibility:
+	visible !important;
+	height: 50px !important; }
+.ui-sortable-placeholder * { visibility: hidden; }
+
+.story_column { width: 460px; float: left; padding-bottom: 50px; }
+
 .story{
 	width: 445px;
 	background-color:#355664;
@@ -15,6 +24,7 @@
 
 .story .header {
 	cursor: move;
+	padding: 0px 0px 2px 0px;
 }
 
 .story .story.status {
@@ -77,27 +87,9 @@ ol.tasks li:first-child {
 
 /* Color over ride */
 .story.finished {
-	background-color:#355645;
-	border: 1px solid #1F3400;
-}
-
-.story.finished .line{
-    background-color:#244011;
-    border-bottom:1px solid #416350;
-}
-
-.tasks .finished {
-	background-color:#355650;
-	border: 1px solid #1F3400;
-}
-
-.tasks .finished .task_header {
-	background-color:#355640;
-	border-top: 1px solid #1F3400;
-	border-bottom: 1px solid #1F3400;
+	border: 1px solid #098400;
 }
 
 .story.rejected {
-	border: 1px solid #D03400;
+	border: 1px solid #A61515;
 }
-

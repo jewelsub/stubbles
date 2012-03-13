@@ -2,7 +2,11 @@
 	<% box_header do %>
 		<span><%= story.title %></span>
 		<div class="actions clear" style="float: right;">
-			<%= action_links_for_story(story) %>
+			<div style="float: left;">
+				<%= render :partial => 'shared/estimated_and_spent_hours', 
+					:locals => {:estimated => story.total_hours_estimated, 
+								:spent => story.total_hours_spent} %>
+			</div>
 			<%= link_to 'Edit', edit_project_story_path(story.project, story),
 				:remote=>true, :class => 'edit icon',
 				:'data-disable-with' => "Loading..." %>
@@ -16,9 +20,7 @@
 	<% box_content do %>
 		<span class="assigned_to"><%= assigned_person_for(story) %></span>		
 		<div style="float: right;">
-			<%= render :partial => 'shared/estimated_and_spent_hours', 
-				:locals => {:estimated => story.total_hours_estimated, 
-							:spent => story.total_hours_spent} %>
+			<%= action_links_for_story(story) %>
 		</div>
 		<p><%=raw story.description %></p>
 		<div>
