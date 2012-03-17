@@ -1,5 +1,5 @@
 //= require jquery_ujs
-//= require message
+//= require notification
 //= require ajax_loader
 
 $(function() {

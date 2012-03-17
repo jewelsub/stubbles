@@ -1,3 +1,5 @@
+//= require jquery.noty
+
 $(function() {
 	$("#notice").on('click', function() {
 		hideSlidingMessage();
@@ -17,12 +19,11 @@ function showMessage(message){
 }
 
 function hideSlidingMessage(){
-	$("#notice").stop().slideUp();
+	$.noty.close()
 }
 
-function showSlidingMessage(message, className){
-	$("#notice").removeClass().addClass(className).html(message);
-	$("#notice").slideDown().delay(10000).slideUp();
+function showSlidingMessage(message, type){
+	noty({text: message, type: type, layout: 'topRight'});
 }
 
 function showSuccessMessage(message){

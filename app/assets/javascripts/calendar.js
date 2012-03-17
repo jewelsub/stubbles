@@ -1,5 +1,5 @@
 //= require lib/fullcalendar
-//= require message
+//= require notification
 
 function loadCalendar(projectId, user_id) {
 		$('#calendar').html('').fullCalendar({
