@@ -21,3 +21,4 @@ end
 gem 'jquery-rails'
 gem 'workflow'
 gem 'devise'
+gem 'acts-as-taggable-on', '~> 2.2.2'

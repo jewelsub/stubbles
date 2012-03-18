@@ -16,8 +16,13 @@ Product owner
 
 This project is under develpment and still wating to be licensed. But feel free to use it for any kind of purpose. At least the version in the git public repo will be there to use.
 
-Plugin used
+Rails plugin used
+---------------------
+* [acts-as-taggable-on](http://github.com/mbleigh/acts-as-taggable-on)
+
+Javascript plugin used
 ---------------------
 * [jquery ui](http://jqueryui.com)
 * [jquery full calendar, for managing event calendar](http://arshaw.com/fullcalendar)
 * [jquery noty, a notification plugin](http://needim.github.com/noty)
+* [planning to use Tagedit](https://github.com/webworka/Tagedit)

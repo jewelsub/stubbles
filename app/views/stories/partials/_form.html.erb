@@ -3,14 +3,15 @@
 <% box_container(container_id_of(story), {:'class' => 'story'}) do %>
 	<%= form_for([project, story], :remote=>true) do |f| %>
 		<% box_header do %>
-			<%= f.text_field :title, :required => true, :size => "63" %>
+			<%= f.text_field :title, :required => true, :size => "55" %>
 		<% end %>
 		<% box_content do %>
 			<span><%= story.status %></span><br/>
 			<span><%= f.select(:assigned_to_id, story.assignable_users.collect {|u| [u.email, u.id]}, :include_blank => true) %></span>
-			<p><%= f.text_area :description, :size => "50x5",
+			<p><%= f.text_area :description, :size => "45x5",
 					:class => 'richtext' %></p><br/>
 			<div>
+				<%= f.text_field :tag_list, :size => "55" %>
 				<%= f.submit(:'data-disable-with' => "Saving...", :class => 'button') %>
 				<%= ajax_cancel_link(story, '.story') %>
 			</div>

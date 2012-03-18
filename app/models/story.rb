@@ -1,5 +1,6 @@
 class Story < ActiveRecord::Base
   include Workflow
+  acts_as_taggable
 
   validates :title, :presence => true
 
