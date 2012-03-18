@@ -10,4 +10,7 @@ class User < ActiveRecord::Base
   has_many :memberships, :class_name => 'ProjectMembership'
   has_many :projects, :through => :memberships, :source => :project
 
+  def default_project
+  	projects.order("created_at DESC").try(:first)
+  end
 end

@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(:version => 20120302151222) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.float    "sprint_length", :default => 2.0
     t.date     "started_on"
     t.integer  "creator_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "stories", :force => true do |t|

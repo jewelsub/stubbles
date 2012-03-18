@@ -1,5 +1,3 @@
-//= require lib/jquery.cleditor.js
-
 var SORTABLE_COLUMN_SELECTOR = ".story_column";
 var PROJECT_ID = window.location.pathname.split('/')[2]; //expecting the pathname as /projects/1/dashboard
 

@@ -23,6 +23,12 @@ Stubbles::Application.routes.draw do
       post 'update_time_entry'
       get 'time_entry'
     end
+
+    resources :project_reports do
+      collection do
+        get 'sprint_burndown'
+      end
+    end
   end
 
   resources :stories do
