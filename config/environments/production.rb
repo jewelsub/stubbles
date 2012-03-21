@@ -57,4 +57,6 @@ Stubbles::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+	config.logger = Logger.new(config.log_path, 50, 5242880)
 end

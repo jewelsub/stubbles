@@ -1,4 +1,4 @@
-//= require jquery.noty
+//= require lib/jquery.noty
 
 $(function() {
 	$("#notice").on('click', function() {

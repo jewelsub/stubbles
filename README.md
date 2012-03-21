@@ -25,4 +25,4 @@ Javascript plugin used
 * [jquery ui](http://jqueryui.com)
 * [jquery full calendar, for managing event calendar](http://arshaw.com/fullcalendar)
 * [jquery noty, a notification plugin](http://needim.github.com/noty)
-* [planning to use Tagedit](https://github.com/webworka/Tagedit)
+* [tag-it](http://aehlke.github.com/tag-it/)

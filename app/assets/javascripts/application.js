@@ -13,7 +13,7 @@ $(function() {
 		$(this).datepicker();
 	});
 
-	$('.richtext').cleditor({useCSS:true});
+	$('.richtext').cleditor({useCSS:true
 });
 
 function addSubmitalbeElemntInForm() {

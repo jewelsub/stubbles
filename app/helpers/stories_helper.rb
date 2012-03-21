@@ -19,5 +19,4 @@ module StoriesHelper
   		end
   	end
   end
-
 end
