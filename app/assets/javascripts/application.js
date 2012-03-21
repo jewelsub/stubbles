@@ -2,7 +2,6 @@
 //= require notification
 //= require ajax_loader
 //= require lib/jquery.cleditor.js
-
 $(function() {
 	$(".ui-button").button();
 
@@ -13,7 +12,7 @@ $(function() {
 		$(this).datepicker();
 	});
 
-	$('.richtext').cleditor({useCSS:true
+	$('.richtext').cleditor({useCSS:true});
 });
 
 function addSubmitalbeElemntInForm() {
