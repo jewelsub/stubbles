@@ -7,7 +7,7 @@ $(function() {
 	$(SORTABLE_COLUMN_SELECTOR).sortable({
 		connectWith: SORTABLE_COLUMN_SELECTOR,
 		forcePlaceholderSize: true,
-		handle: '.header',
+		handle: '.portlet-header',
 		stop: function(event, ui){
 			var scope = ui.item.closest(SORTABLE_COLUMN_SELECTOR).attr('data-scope');
 			var storyElem = ui.item;
@@ -27,17 +27,20 @@ $(function() {
 	$("#toggleCollapse").click(function() {
 		toggleCollapse();
 	});
-	addCollapseToggleForPortlet();
-	hideAllPortlet();
 
 	$(function() {
-		$(".story_type").buttonset().removeClass("story_type");
+		updateStoryWidget(true);
 		$("body").ajaxStop(function(){
-			$(".story_type").buttonset().removeClass("story_type");
+			updateStoryWidget(false);
 		});
 	});
 
 });
+
+function updateStoryWidget(collapse) {
+	$(".story_type").buttonset().removeClass("story_type");
+	addPortlets(collapse);
+}
 
 function updateChanges(changes){
 	startLoading();
@@ -46,24 +49,29 @@ function updateChanges(changes){
 	).complete(function() { stopLoading(); });
 }
 
-function addCollapseToggleForPortlet() {
-	$(".story_column").on('click', ".collapse, .expand", 
-		function() {
-			$(this).toggleClass("collapse").toggleClass("expand");
-			$(this).closest(".story").find(".content:first").toggle("fast");
-		}
-	);
-}
-
-function hideAllPortlet() {
-	$(".story .content").hide();
-	$(".story .header").find(".icon.collapse").removeClass().addClass("icon expand");	
-}
-
 function toggleCollapse() {
-	$(".header .collapse, .header .expand").click();
+	$(".portlet-header .collapsable").click();
 }
 
 function addRichText(rootElement) {
   $(rootElement).find(".richtext").cleditor({width:440, height:180, useCSS:true})[0];
+}
+
+function addPortlets(collapse) {
+	var expand_class = "ui-icon-triangle-1-n";
+	var collapse_class = "ui-icon-triangle-1-s";
+	var init_class = collapse ? collapse_class : expand_class;
+	$(".portlet").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+			.find(".portlet-header")
+				.addClass("ui-widget-header ui-corner-all")
+				.prepend("<span class='collapsable ui-icon " + init_class + "' style='float: left;'></span>")
+				.end()
+			.find(".portlet-content");
+	$(".portlet .portlet-header").click(function() {
+		var element = $(this).find(".collapsable");
+		element.toggleClass(collapse_class).toggleClass(expand_class);
+		element.parents(".story:first").find(".portlet-content").toggle("fast");
+	});
+	if(collapse) $(".portlet-content").hide();
+	$(".portlet").removeClass("portlet");
 }

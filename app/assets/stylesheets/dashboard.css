@@ -7,31 +7,7 @@
 
 .story_column { width: 460px; float: left; padding-bottom: 50px; }
 
-.story{
-	width: 445px;
-	background-color:#355664;
-	margin: 5px 0px;
-	padding:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	border: 1px solid #1F343C;
-}
-
-.story .header .actions{
-	float: right;
-}
-
-.story .header {
-	cursor: move;
-	padding: 0px 0px 2px 0px;
-}
-
-.story .story.status {
-	float: left;
-}
-
-.story .content .assigned_to {
+.story .assigned_to {
 	padding:1px 3px 1px 3px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
@@ -39,8 +15,22 @@
 	border: 1px solid #1F343C;
 }
 
+.story .ui-icon {
+	cursor:pointer;
+}
+
+.story .portlet-header {
+	min-height:25px;
+	cursor: move;
+}
+
+.story .portlet-content {
+	padding: 5px 5px 10px 5px;
+}
+
 .hours {
 	display: inline-block; color: #606060;
+	padding-top: 1px;
 }
 
 ol.tasks {margin:0px; padding:0px;}

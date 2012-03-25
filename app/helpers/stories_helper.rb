@@ -35,4 +35,53 @@ module StoriesHelper
 		end
   end
 
+  def story_edit_link(story)
+  	link_to 'Edit', edit_project_story_path(story.project, story),
+				:remote=>true, :class => 'ui-icon ui-icon-pencil', :style => 'float: left;',
+				:'data-disable-with' => "Loading..."
+  end
+
+  def story_delete_link(story)
+	  link_to 'Destroy', project_story_path(story.project, story), 
+				:confirm => 'Are you sure?', :class => 'ui-icon ui-icon-trash',
+				:method => :delete, :remote=>true, :style => 'float: left;',
+				:'data-disable-with' => "Deleting..."
+  end
+
+  def story_time_estimations(story)
+  	render :partial => 'shared/estimated_and_spent_hours', 
+					:locals => {:estimated => story.total_hours_estimated, 
+								:spent => story.total_hours_spent}
+  end
+
+  def story_container(story)
+  	concat <<-EOF.html_safe
+    	<div id='#{container_id_of(story)}' class="portlet story #{story.status}">
+  	EOF
+  	yield
+  	concat <<-EOF.html_safe
+    	</div>
+  	EOF
+  end
+
+  def story_header()
+  	concat <<-EOF.html_safe
+    	<div class="portlet-header">
+  	EOF
+    yield
+  	concat <<-EOF.html_safe
+    	</div>
+  	EOF
+  end
+
+  def story_content()
+  	concat <<-EOF.html_safe
+    	<div class="portlet-content" style="display: block; ">
+  	EOF
+    yield
+  	concat <<-EOF.html_safe
+    	</div>
+  	EOF
+  end
+
 end

@@ -1,23 +1,15 @@
-<% box_container(container_id_of(story), {:'class' => "story #{story.status}"}) do %>
-	<% box_header do %>
+<% story_container(story) do %>
+	<% story_header do %>
 		<span><%= story.title %></span>
-		<div class="actions clear" style="float: right;">
+		<div class="actions clear" style="float: right; ">
 			<div style="float: left;">
-				<%= render :partial => 'shared/estimated_and_spent_hours', 
-					:locals => {:estimated => story.total_hours_estimated, 
-								:spent => story.total_hours_spent} %>
+				<%= story_time_estimations(story) %>
 			</div>
-			<%= link_to 'Edit', edit_project_story_path(story.project, story),
-				:remote=>true, :class => 'edit icon',
-				:'data-disable-with' => "Loading..." %>
-			<%= link_to 'Destroy', project_story_path(story.project, story), 
-				:confirm => 'Are you sure?', :class => 'delete icon',
-				:method => :delete, :remote=>true,
-				:'data-disable-with' => "Deleting..."%>
-			<span class="icon collapse" style="float: left;"></span>
+			<%= story_edit_link(story) %>
+			<%= story_delete_link(story) %>
 		</div>
 	<% end %>
-	<% box_content do %>
+	<% story_content do %>
 		<span class="assigned_to"><%= assigned_person_for(story) %></span>		
 		<div style="float: right;">
 			<%= action_links_for_story(story) %>

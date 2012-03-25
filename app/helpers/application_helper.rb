@@ -3,39 +3,6 @@ module ApplicationHelper
     model.new_record? ? 'new' : "#{model.class.name.downcase}-#{model.id}"
   end
   
-  def box_container(containerId, options = {})
-    custom_class = options[:class]
-    options.delete(:class)
-    options_as_array = options.collect{ |key, value| "#{key} = \"#{value}\""}
-  	concat <<-EOF.html_safe
-    	<div id='#{containerId}' #{options_as_array.join(' ')} class="#{custom_class}">
-  	EOF
-  	yield
-  	concat <<-EOF.html_safe
-    	</div>
-  	EOF
-  end
-
-  def box_header()
-  	concat <<-EOF.html_safe
-    	<div class="header">
-  	EOF
-    yield
-  	concat <<-EOF.html_safe
-    	</div>
-  	EOF
-  end
-
-  def box_content()
-  	concat <<-EOF.html_safe
-    	<div class="content" style="display: block; "><div class="line"></div>
-  	EOF
-    yield
-  	concat <<-EOF.html_safe
-    	</div>
-  	EOF
-  end
-
   def ajax_cancel_link(model, removeElement = 'form')
     if(!model.new_record?)
       link_to "cancel", {:action => "show"}, :remote => true, 
