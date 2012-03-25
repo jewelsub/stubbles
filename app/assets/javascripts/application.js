@@ -13,7 +13,17 @@ $(function() {
 	});
 
 	$('.richtext').cleditor({useCSS:true});
+
+	addUIButton();
+	$("body").ajaxStop(function(){
+		addUIButton();
+	});
+
 });
+
+function addUIButton() {
+	$('.button').button().closest('.button').removeClass('button');
+}
 
 function addSubmitalbeElemntInForm() {
 	$('body').on('change', '.submittable', function() {

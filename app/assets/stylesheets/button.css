@@ -1,37 +1,19 @@
-.button, .button:visited {
-	padding: 1px 5px 3px 5px;
-	font-size: 12px;
-	display: inline;
-	border-width:1px;
-	color: #fff;
-	cursor: pointer;
-	font-weight: bold;
-	background-color: #336996;
-	border: 1px solid #1D415F;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	text-shadow: 1px 1px #666;
-	cursor: pointer;
-}
-.button:hover { background-color: #2575cf; }
-.button:active { top: 1px; }
-.button.small, .button.small:visited	{
-	margin: 0px 0px 0px 1px;
-}
-.button.large, .button.large:visited	{
-	padding: 3px 8px 5px 8px;
-	font-size: 15px; 
-	margin: 0px 2px 0px 2px;
+.story .ui-button {
+	font-size: .8em !important;
+	padding: .3em .8em !important;
 }
 
-.accept.button			{ background-color: #91bd09; border: 1px solid #384216;}
-.accept.button:hover	{ background-color: #749a02; border: 1px solid #384216;}
-.reject.button			{ background-color: #DC3737; border: 1px solid #6C1C1C;}
-.reject.button:hover	{ background-color: #cf2525; border: 1px solid #6C1C1C;}
-.finish.button			{ background-color: #336996; border: 1px solid #1D415F;}
-.finish.button:hover	{ background-color: #2575cf; border: 1px solid #1D415F;}
-.start.button			{ background-color: #e8a344; border: 1px solid #5F431D;}
-.start.button:hover		{ background-color: #fc9200; border: 1px solid #5F431D;}
-.reopen.button			{ background-color: #91bd09; border: 1px solid #384216;}
-.reopen.button:hover	{ background-color: #749a02; border: 1px solid #384216;}
+.story .ui-button-text-only .ui-button-text {
+	padding: 0 !important;
+}
+
+.accept.ui-button			{ background: #91bd09 !important; border: 1px solid #384216 !important;}
+.accept.ui-button:hover	{ background: #749a02 !important; border: 1px solid #384216 !important;}
+.reject.ui-button			{ background: #DC3737 !important; border: 1px solid #6C1C1C !important;}
+.reject.ui-button:hover	{ background: #cf2525 !important; border: 1px solid #6C1C1C !important;}
+.finish.ui-button			{ background: #336996 !important; border: 1px solid #1D415F !important;}
+.finish.ui-button:hover	{ background: #2575cf !important; border: 1px solid #1D415F !important;}
+.start.ui-button			{ background: #e8a344 !important; border: 1px solid #5F431D !important;}
+.start.ui-button:hover	{ color: #FFFFFF !important; background: #fc9200 !important; border: 1px solid #5F431D !important;}
+.reopen.ui-button			{ background: #91bd09 !important; border: 1px solid #384216 !important;}
+.reopen.ui-button:hover	{ background: #749a02 !important; border: 1px solid #384216 !important;}

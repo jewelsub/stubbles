@@ -28,13 +28,10 @@ $(function() {
 		toggleCollapse();
 	});
 
-	$(function() {
-		updateStoryWidget(true);
-		$("body").ajaxStop(function(){
-			updateStoryWidget(false);
-		});
+	updateStoryWidget(true);
+	$("body").ajaxStop(function(){
+		updateStoryWidget(false);
 	});
-
 });
 
 function updateStoryWidget(collapse) {

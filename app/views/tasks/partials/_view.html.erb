@@ -3,13 +3,8 @@
 		<span><%= task.title %></span>
 		<div style="display: inline-block; float: right; margin-top: -3px;">
 			<%= action_links_for_task(task) %>
-			<%= link_to 'Edit', edit_story_task_path(task.story, task), 
-				:remote=>true, :class => 'edit icon',
-				:'data-disable-with' => "Loading..." %>
-			<%= link_to 'Destroy', story_task_path(task.story, task), 
-				:confirm => 'Are you sure?', 
-				:method => :delete, :class => 'delete icon', 
-				:remote=>true, :'data-disable-with' => "Deleting..." %>
+			<%= task_edit_link(task) %>
+			<%= task_delete_link(task) %>
 		</div>
 	</div>
 	<div class="task_container">
