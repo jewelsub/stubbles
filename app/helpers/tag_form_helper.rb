@@ -1,7 +1,6 @@
 module TagFormHelper
 
 	class ActionView::Helpers::FormBuilder
-	  
 	  def tag(method, options = {})
 	  	available_tags = (options[:available_tags] || []).collect { |tag| tag.name }.join ','
 	    @template.content_tag :ul, {:'data-item-name' => @object_name, 
@@ -13,6 +12,9 @@ module TagFormHelper
 				end
     	end
 	  end
+	end
 
+	def tags_tag
+		
 	end
 end

@@ -29,6 +29,14 @@ $(function() {
 	});
 	addCollapseToggleForPortlet();
 	hideAllPortlet();
+
+	$(function() {
+		$(".story_type").buttonset().removeClass("story_type");
+		$("body").ajaxStop(function(){
+			$(".story_type").buttonset().removeClass("story_type");
+		});
+	});
+
 });
 
 function updateChanges(changes){

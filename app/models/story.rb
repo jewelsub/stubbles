@@ -3,6 +3,7 @@ class Story < ActiveRecord::Base
   acts_as_taggable
 
   validates :title, :presence => true
+  validates :story_type, :presence => true
 
   belongs_to :project
   belongs_to :assigned_to, :class_name => "User", :foreign_key => "assigned_to_id"

@@ -19,4 +19,20 @@ module StoriesHelper
   		end
   	end
   end
+
+  def select_users(form, story)
+  	form.select(:assigned_to_id, 
+							story.assignable_users.collect {|u| [u.email, u.id]},
+  						:include_blank => true)
+  end
+
+  def select_story_type(form)
+  	content_tag :div, :class => 'story_type' do
+	  	StoryType.all.each do |story_type|
+				concat(form.radio_button(:story_type, story_type))
+				concat(form.label("story_type_#{story_type}", story_type))
+			end
+		end
+  end
+
 end
